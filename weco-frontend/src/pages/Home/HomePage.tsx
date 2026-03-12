@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import headerLogo from '../../assets/header-logo.png'
-import aboutLogo from '../../assets/about-logo.png'
 import WEcoMap from '../../components/Map/WEcoMap'
 import styles from './HomePage.module.css'
 
