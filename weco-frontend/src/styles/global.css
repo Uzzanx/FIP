@@ -1,0 +1,58 @@
+/* ── Global reset & base styles ─────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'ABeeZee', sans-serif;
+  background: #f3f1e9;
+  color: #1a3d22;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'Aboreto', cursive;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Leaflet DivIcon helper — rendered outside React tree */
+.weco-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.weco-marker--box {
+  width: 20px;
+  height: 20px;
+  background: #0d4e18;
+}
+
+.weco-marker--pickup {
+  width: 20px;
+  height: 20px;
+  background: #1a6b3c;
+}

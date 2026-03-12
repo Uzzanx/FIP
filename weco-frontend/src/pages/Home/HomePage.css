@@ -1,0 +1,430 @@
+.home-page {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #11442a;
+  font-family: Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(25, 95, 52, 0.09) 0 20%, transparent 21%),
+    radial-gradient(circle at 88% 18%, rgba(25, 95, 52, 0.08) 0 23%, transparent 24%),
+    radial-gradient(circle at 16% 86%, rgba(25, 95, 52, 0.08) 0 19%, transparent 20%),
+    #f3f1e9;
+}
+
+.top-strip {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1rem;
+  border-bottom: 2px solid #8fb595;
+  background: linear-gradient(180deg, #0f5f32, #0a4323);
+}
+
+.brand-mark {
+  position: absolute;
+  left: 1rem;
+  display: grid;
+  align-items: center;
+}
+
+.brand-mark__img {
+  display: block;
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+.top-strip__links {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.top-strip__links a {
+  color: #f5fff6;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.top-strip__links a:hover {
+  color: #d5f2d8;
+}
+
+.home-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 1.1rem 0.9rem 0.35rem;
+}
+
+.home-nav button {
+  border: none;
+  background: transparent;
+  color: #2c6542;
+  font-size: clamp(0.72rem, 1.8vw, 1.03rem);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.home-nav button:hover {
+  color: #144f2d;
+}
+
+.bonus-hero {
+  position: relative;
+  margin: 0.6rem auto 1.9rem;
+  width: min(920px, 94%);
+  min-height: 170px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+}
+
+.bonus-hero p {
+  margin: 0;
+  color: #2e6d45;
+  font-size: clamp(1.3rem, 4.1vw, 2.55rem);
+  line-height: 0.98;
+  opacity: 0.35;
+}
+
+.primary-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border: 2px solid #9ec7a8;
+  border-radius: 12px;
+  min-width: 148px;
+  padding: 0.4rem 2.1rem;
+  color: #f5fff6;
+  background: linear-gradient(180deg, #116434, #0c4927);
+  box-shadow: 0 7px 14px rgba(10, 60, 31, 0.2);
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.primary-button:hover {
+  filter: brightness(1.07);
+}
+
+.sections {
+  width: min(980px, 94%);
+  margin: 0 auto;
+  padding: 0.3rem 0 2.5rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.home-section {
+  scroll-margin-top: 6.3rem;
+}
+
+.home-section h2 {
+  margin: 0 0 0.85rem;
+  text-align: center;
+  color: #f4fff5;
+  font-size: clamp(1.42rem, 2.9vw, 2.35rem);
+  letter-spacing: 0.03em;
+  font-weight: 400;
+}
+
+.home-section--light h2 {
+  color: #0D4E18;
+}
+
+.blob-card {
+  position: relative;
+  overflow: hidden;
+  padding: 2.25rem 2.5rem;
+  min-height: 310px;
+  color: #f4fff5;
+  background-color: #0d582f;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  border-radius: 46px;
+}
+
+.blob-card::before {
+  display: none;
+}
+
+.blob-card::after {
+  display: none;
+}
+
+.blob-card p {
+  margin: 0 0 0.7rem;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: clamp(0.9rem, 1.75vw, 1rem);
+  line-height: 1.55;
+}
+
+.blob-card p:last-child {
+  margin-bottom: 0;
+}
+
+.blob-card--about {
+  position: relative;
+  min-height: 360px;
+  padding: 10% 28% 12% 15%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.blob-card__text {
+  position: relative;
+  z-index: 1;
+  max-width: 68%;
+}
+
+.blob-card .blob-card__heading {
+  margin: 0 0 0.75rem;
+  color: #f4fff5;
+  font-size: clamp(1.2rem, 2.4vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.about-force {
+  position: absolute;
+  left: 40%;
+  bottom: 13%;
+  margin: 0;
+  color: rgba(238, 252, 240, 0.95);
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.weco-logo-cluster {
+  position: absolute;
+  right: -0.55rem;
+  bottom: 1.1rem;
+  width: min(35vw, 395px);
+  max-width: 395px;
+  aspect-ratio: 558.05 / 434.42;
+  height: auto;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+.weco-logo-photo {
+  display: block;
+  width: 538px;
+  height: 324px;
+  object-fit: cover;
+  object-position: 230% center;
+  margin-bottom: 80px;
+}
+
+.blob-card--bonuses {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  border-radius: 0;
+  min-height: 305px;
+  padding: 10% 28% 12% 15%;
+}
+
+@media (max-width: 1200px) {
+  .blob-card--about {
+    padding: 10% 26% 12% 14%;
+    background-size: 100% 100%;
+  }
+
+  .blob-card__text {
+    max-width: 72%;
+  }
+
+  .about-force {
+    left: 14%;
+    font-size: 0.96rem;
+  }
+
+  .weco-logo-cluster {
+    width: min(33vw, 330px);
+    right: -0.4rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .blob-card--about {
+    padding: 2rem 2rem 2rem 1.5rem;
+    min-height: auto;
+    background-size: 100% 100%;
+    border-radius: 32px;
+    overflow: hidden;
+  }
+
+  .blob-card--bonuses {
+    border-radius: 32px;
+    min-height: auto;
+    padding: 1.85rem 1.25rem;
+  }
+
+  .about-force {
+    position: static;
+    margin-top: 0.85rem;
+    text-align: left;
+  }
+
+  .weco-logo-cluster {
+    position: static;
+    width: min(70vw, 300px);
+    margin: 0.8rem 0 0 auto;
+  }
+
+  .blob-card__text {
+    max-width: 100%;
+  }
+}
+
+.home-section--light {
+  text-align: center;
+}
+
+.mission-text,
+.locations-hint {
+  margin: 0.15rem 0;
+  color: #2f6a45;
+  font-size: clamp(0.92rem, 1.7vw, 1rem);
+}
+
+.map-canvas {
+  position: relative;
+  width: min(840px, 100%);
+  margin: 1rem auto 0;
+  height: 350px;
+  border-radius: 12px;
+  border: 1px solid #d3d7cd;
+  background: #f0f2ec;
+  overflow: hidden;
+}
+
+.leaflet-map {
+  width: 100%;
+  height: 350px;
+}
+
+.leaflet-map .leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.location-card {
+  margin: 1rem auto 0;
+  width: min(840px, 100%);
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.65rem;
+  border-radius: 10px;
+  border: 1px solid #c4cfbf;
+  background: #f8f8f3;
+  text-align: left;
+}
+
+.location-card img {
+  width: 100%;
+  height: 94px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.location-card h3 {
+  margin: 0 0 0.3rem;
+  color: #1b5f36;
+  font-size: 1.02rem;
+}
+
+.location-card__address,
+.location-card__meta {
+  margin: 0;
+  color: #315d40;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 720px) {
+  .top-strip {
+    min-height: 52px;
+    padding-inline: 0.7rem;
+  }
+
+  .brand-mark__img {
+    height: 44px;
+  }
+
+  .top-strip__links {
+    gap: 0.45rem;
+    margin-left: 2.8rem;
+  }
+
+  .top-strip__links a {
+    font-size: 0.82rem;
+  }
+
+  .home-nav {
+    gap: 0.7rem;
+  }
+
+  .blob-card {
+    padding: 1.8rem 1.2rem;
+    border-radius: 34px;
+    min-height: auto;
+  }
+
+  .blob-card--about {
+    min-height: auto;
+    padding: 1.85rem 1.25rem;
+    border-radius: 34px;
+  }
+
+  .blob-card__text {
+    max-width: 100%;
+  }
+
+  .about-force {
+    position: static;
+    margin-top: 0.8rem;
+    text-align: center;
+  }
+
+  .weco-logo-cluster {
+    position: relative;
+    width: min(74vw, 260px);
+    height: auto;
+    margin: 0.8rem auto 0;
+  }
+
+  .location-card {
+    grid-template-columns: 1fr;
+  }
+
+  .location-card img {
+    height: 150px;
+  }
+
+  .map-canvas,
+  .leaflet-map {
+    height: 290px;
+  }
+}

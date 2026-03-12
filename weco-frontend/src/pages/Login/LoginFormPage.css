@@ -1,0 +1,199 @@
+/* Inherits lc-page background / header / footer styles from LoginChoicePage.css
+   via shared class names (top-strip, brand-mark, lc-footer, lc-dot, lc-back-btn) */
+
+.lf-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-family: Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(ellipse 38% 55% at 88% 18%, rgba(13, 78, 24, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 45% at 10% 38%, rgba(13, 78, 24, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 50% at 80% 72%, rgba(13, 78, 24, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 28% 40% at 15% 82%, rgba(13, 78, 24, 0.06) 0%, transparent 70%),
+    #f3f1e9;
+}
+
+/* ── Header (same as LoginChoicePage) ────────────────────── */
+.lf-page .top-strip {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1rem;
+  border-bottom: 2px solid #8fb595;
+  background: linear-gradient(180deg, #0f5f32, #0a4323);
+}
+
+.lf-page .brand-mark {
+  position: absolute;
+  left: 1rem;
+  display: grid;
+  align-items: center;
+}
+
+.lf-page .brand-mark__img {
+  display: block;
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+.lf-page .top-strip__links {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.lf-page .top-strip__links a {
+  color: #f5fff6;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.lf-page .top-strip__links a:hover {
+  color: #d5f2d8;
+}
+
+.lf-page .lc-back-btn {
+  position: absolute;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #f5fff6;
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.2rem 0.4rem;
+}
+
+.lf-page .lc-back-btn:hover {
+  color: #d5f2d8;
+}
+
+/* ── Main ─────────────────────────────────────────────────── */
+.lf-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem 2rem;
+}
+
+.lf-title {
+  font-family: 'ABeeZee', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 400;
+  color: #1a5c35;
+  letter-spacing: 0.06em;
+  margin: 0 0 2rem;
+  text-align: center;
+}
+
+/* ── Form ─────────────────────────────────────────────────── */
+.lf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 260px;
+}
+
+.lf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.lf-field label {
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.82rem;
+  color: #2a5c3a;
+}
+
+.lf-field input {
+  padding: 0.45rem 0.7rem;
+  border: 1.5px solid #a8c8b0;
+  border-radius: 6px;
+  background: #f8fff9;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.9rem;
+  color: #1a3d28;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.lf-field input:focus {
+  border-color: #2e7d4f;
+}
+
+/* ── Error ────────────────────────────────────────────────── */
+.lf-error {
+  margin: 0;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.82rem;
+  color: #c0392b;
+  text-align: center;
+}
+
+/* ── Submit button ────────────────────────────────────────── */
+.lf-submit {
+  margin-top: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #2e7d4f;
+  border-radius: 50px;
+  background: linear-gradient(180deg, #1a6b3c, #114d2b);
+  color: #f0fff2;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: filter 0.18s;
+}
+
+.lf-submit:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+.lf-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Footer dots (same as LoginChoicePage) ────────────────── */
+.lf-page .lc-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 1.2rem 0 1.6rem;
+}
+
+.lf-page .lc-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c5d9c9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: #3a6b4a;
+}
+
+.lf-page .lc-dot--icon {
+  background: transparent;
+  border: 1.5px solid #7aab87;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+}
+
+.lf-page .lc-dot--active {
+  background: #0d4e18;
+}

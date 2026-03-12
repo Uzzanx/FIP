@@ -1,0 +1,277 @@
+﻿/* ── Page ─────────────────────────────────────────────────── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f3ea;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Leaf watermark */
+.page::after {
+  content: '';
+  position: fixed;
+  bottom: -60px;
+  right: -80px;
+  width: 520px;
+  height: 520px;
+  background: url('../../assets/Vector.png') no-repeat center / contain;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Top header ───────────────────────────────────────────── */
+.page__header {
+  background: linear-gradient(90deg, #1a2e1c 0%, #243d27 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  height: 48px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  gap: 10px;
+}
+.page__logo { display: flex; align-items: center; }
+.page__logo-img { height: 52px; width: auto; }
+.page__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
+  font-size: 11px;
+}
+.page__nav a {
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  font-family: 'ABeeZee', sans-serif;
+  letter-spacing: 0.3px;
+}
+.page__nav a:hover { color: #fff; text-decoration: underline; }
+.page__header-arrows { display: flex; gap: 4px; align-items: center; }
+.page__arrow {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  line-height: 1;
+}
+.page__arrow:hover { background: rgba(255,255,255,0.1); }
+
+/* ── Sub-nav ──────────────────────────────────────────────── */
+.page__subnav {
+  background: #f5f3ea;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 10px 14px;
+  font-family: 'Aboreto', cursive;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  border-bottom: 1px solid rgba(30,53,32,0.1);
+  flex-wrap: wrap;
+  position: sticky;
+  top: 48px;
+  z-index: 20;
+}
+.page__subnav a {
+  color: #1e3520;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.page__subnav a:hover { text-decoration: underline; }
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.page__hero {
+  padding: 40px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.page__hero-lines { display: flex; flex-direction: column; gap: 2px; align-items: center; }
+.page__hero-line {
+  font-family: 'Aboreto', cursive;
+  font-size: clamp(24px, 7.5vw, 46px);
+  color: #1e3520;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+.page__hero-line--highlight {
+  background: #1e3520;
+  color: #fff;
+  padding: 1px 18px 3px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.page__btn {
+  background: #1e3520;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 32px 8px;
+  font-family: 'Aboreto', cursive;
+  font-size: clamp(24px, 7.5vw, 46px);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: opacity .15s;
+  position: relative;
+  z-index: 1;
+}
+.page__btn:hover { opacity: 0.82; }
+
+/* ── About Us ─────────────────────────────────────────────── */
+.page__section--about {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 12px;
+}
+.page__about-leaf {
+  background: linear-gradient(145deg, #1e3520 0%, #2d4d30 55%, #1e3520 100%);
+  border-radius: 50% 50% 50% 50% / 20% 20% 20% 20%;
+  padding: 52px 48px 52px 36px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  min-height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+.page__about-leaf::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+.page__about-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.page__about-logo-wrap {
+  flex-shrink: 0;
+  width: 42%;
+  max-width: 480px;
+  min-width: 200px;
+  min-height: 220px;
+  align-self: stretch;
+  background: url('../../assets/about-logo.png') no-repeat bottom right / 150%;
+  position: relative;
+}
+
+.page__about-logo {
+  display: none;
+}
+.page__about-tagline {
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 6px;
+}
+
+/* Light text (inside dark sections) */
+.page__section-title--light {
+  font-family: 'Aboreto', cursive;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.page__section-text--light {
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.85);
+  max-width: 560px;
+}
+
+/* ── Plain sections ───────────────────────────────────────── */
+.page__section {
+  padding: 32px 20px;
+  position: relative;
+  z-index: 1;
+}
+.page__section-title {
+  font-family: 'Aboreto', cursive;
+  font-size: 20px;
+  color: #1e3520;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.page__section-text {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #2a4020;
+  max-width: 560px;
+  margin-bottom: 6px;
+}
+.page__locations-sub {
+  font-size: 13px;
+  color: #5a7a5a;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+/* ── About Bonuses ────────────────────────────────────────── */
+.page__section--bonuses {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 12px;
+}
+.page__bonuses-leaf {
+  background: linear-gradient(145deg, #1e3520 0%, #2d4d30 55%, #1e3520 100%);
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  padding: 52px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 180px;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.page__footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 12px 28px;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+.page__dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #1e3520;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e3520;
+  flex-shrink: 0;
+}
+.page__dot--active { background: #1e3520; color: #fff; border-color: #1e3520; }

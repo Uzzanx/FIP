@@ -1,0 +1,313 @@
+.rw-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-family: Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(ellipse 38% 55% at 88% 18%, rgba(13, 78, 24, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 45% at 10% 38%, rgba(13, 78, 24, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 50% at 80% 72%, rgba(13, 78, 24, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 28% 40% at 15% 82%, rgba(13, 78, 24, 0.06) 0%, transparent 70%),
+    #f3f1e9;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.rw-page .top-strip {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1rem;
+  border-bottom: 2px solid #8fb595;
+  background: linear-gradient(180deg, #0f5f32, #0a4323);
+}
+
+.rw-page .brand-mark {
+  position: absolute;
+  left: 1rem;
+}
+
+.rw-page .brand-mark__img {
+  display: block;
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+.rw-page .top-strip__links {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.rw-page .top-strip__links a {
+  color: #f5fff6;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.rw-page .top-strip__links a:hover { color: #d5f2d8; }
+
+.rw-back-btn {
+  position: absolute;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #f5fff6;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+}
+
+.rw-back-btn:hover { color: #d5f2d8; }
+
+/* ── Main ─────────────────────────────────────────────────── */
+.rw-main {
+  flex: 1;
+  width: min(400px, 94%);
+  margin: 0 auto;
+  padding: 1.6rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* ── Section title ────────────────────────────────────────── */
+.rw-section-title {
+  margin: 0 0 0.9rem;
+  font-family: 'Aboreto', cursive;
+  font-size: clamp(0.82rem, 2.2vw, 1rem);
+  font-weight: 400;
+  color: #0d4e18;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* ── AWARDS YOU HAVE / mini cards ─────────────────────────── */
+.rw-section { width: 100%; }
+
+.rw-owned-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+
+.rw-owned-grid--placeholder { opacity: 0.45; }
+
+.rw-mini-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  text-align: center;
+}
+
+.rw-mini-card__img-ph {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: #d5e8d8;
+  margin-bottom: 0.2rem;
+}
+
+.rw-mini-card p,
+.rw-mini-card__name,
+.rw-mini-card__price,
+.rw-mini-card__code {
+  margin: 0;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.72rem;
+  color: #2a5c3a;
+  line-height: 1.3;
+}
+
+/* ── YOUR BONUSES ─────────────────────────────────────────── */
+.rw-bonuses-section { width: 100%; text-align: center; }
+
+.rw-counter-card {
+  background: linear-gradient(180deg, #0f5f32, #0a4323);
+  border-radius: 16px;
+  padding: 1.2rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.rw-counter-num {
+  font-family: 'Aboreto', cursive;
+  font-size: clamp(3.5rem, 12vw, 5rem);
+  color: #f4fff5;
+  line-height: 1;
+}
+
+.rw-counter-sub {
+  margin: 0;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.8rem;
+  color: #a8e6b8;
+}
+
+/* ── SPEND YOUR BONUSES — featured partner items ──────────── */
+.rw-featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.rw-featured-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.rw-featured-btn {
+  width: 100%;
+  padding: 0.65rem 0.5rem;
+  border: 2.5px solid #2e7d4f;
+  border-radius: 50px;
+  background: linear-gradient(180deg, #1a6b3c, #0d4e18);
+  color: #f0fff2;
+  font-family: 'Aboreto', cursive;
+  font-size: clamp(0.72rem, 2vw, 0.86rem);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: filter 0.18s;
+}
+
+.rw-featured-btn:hover { filter: brightness(1.15); }
+
+.rw-featured-desc {
+  margin: 0;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.75rem;
+  color: #2a5c3a;
+  line-height: 1.4;
+}
+
+/* ── Flash message ────────────────────────────────────────── */
+.rw-flash {
+  margin: 0;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.rw-flash--ok { color: #0d6e2a; }
+.rw-flash--err { color: #c0392b; }
+
+/* ── OUR MERCHANDISE bar ──────────────────────────────────── */
+.rw-merch-bar {
+  background: linear-gradient(180deg, #0f5f32, #0a4323);
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  text-align: center;
+  font-family: 'Aboreto', cursive;
+  font-size: 0.82rem;
+  color: #a8e6b8;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.9rem;
+}
+
+/* ── Merchandise grid ─────────────────────────────────────── */
+.rw-merch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+
+.rw-merch-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.18rem;
+  text-align: center;
+}
+
+.rw-merch-card__img-ph {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: #d5e8d8;
+  margin-bottom: 0.15rem;
+}
+
+.rw-merch-card__name {
+  margin: 0;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.72rem;
+  color: #1a3d28;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.rw-merch-card__price {
+  margin: 0;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.7rem;
+  color: #0d4e18;
+  font-weight: 700;
+}
+
+.rw-merch-card__code {
+  margin: 0;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.65rem;
+  color: #5a8a6a;
+  line-height: 1.3;
+}
+
+.rw-merch-redeem-btn {
+  margin-top: 0.3rem;
+  padding: 0.28rem 0.7rem;
+  border: 1.5px solid #2e7d4f;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #1a6b3c, #0d4e18);
+  color: #f0fff2;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.68rem;
+  cursor: pointer;
+  transition: filter 0.18s;
+}
+
+.rw-merch-redeem-btn:hover { filter: brightness(1.15); }
+
+/* ── Footer dots ──────────────────────────────────────────── */
+.rw-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 1.1rem 0 1.5rem;
+}
+
+.rw-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c5d9c9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: #3a6b4a;
+}
+
+.rw-dot--icon {
+  background: transparent;
+  border: 1.5px solid #7aab87;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+}
+
+.rw-dot--active { background: #0d4e18; }

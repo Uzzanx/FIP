@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: weco_postgres
+    environment:
+      POSTGRES_DB: weco_db
+      POSTGRES_USER: weco_user
+      POSTGRES_PASSWORD: weco_password123
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  backend:
+    build: ./weco-backend
+    container_name: weco_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./weco-backend:/app
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql+asyncpg://weco_user:weco_password123@postgres:5432/weco_db
+
+  frontend:
+    build: ./weco-frontend
+    container_name: weco_frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./weco-frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://localhost:8000
+
+volumes:
+  postgres_data:

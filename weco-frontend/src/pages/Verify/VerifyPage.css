@@ -1,0 +1,245 @@
+.vr-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-family: Georgia, 'Times New Roman', serif;
+  background:
+    radial-gradient(ellipse 38% 55% at 88% 18%, rgba(13, 78, 24, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 45% at 10% 38%, rgba(13, 78, 24, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 50% at 80% 72%, rgba(13, 78, 24, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 28% 40% at 15% 82%, rgba(13, 78, 24, 0.06) 0%, transparent 70%),
+    #f3f1e9;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.vr-page .top-strip {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1rem;
+  border-bottom: 2px solid #8fb595;
+  background: linear-gradient(180deg, #0f5f32, #0a4323);
+}
+
+.vr-page .brand-mark {
+  position: absolute;
+  left: 1rem;
+}
+
+.vr-page .brand-mark__img {
+  display: block;
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+.vr-page .top-strip__links {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.vr-page .top-strip__links a {
+  color: #f5fff6;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.vr-page .top-strip__links a:hover { color: #d5f2d8; }
+
+.vr-nav-arrows {
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.vr-nav-arrows button {
+  background: transparent;
+  border: none;
+  color: #f5fff6;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.15rem 0.3rem;
+  line-height: 1;
+}
+
+.vr-nav-arrows button:hover { color: #d5f2d8; }
+
+/* ── Main ─────────────────────────────────────────────────── */
+.vr-main {
+  flex: 1;
+  width: min(360px, 94%);
+  margin: 0 auto;
+  padding: 2.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+/* ── Title ────────────────────────────────────────────────── */
+.vr-title {
+  font-family: 'Aboreto', cursive;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 400;
+  color: #0d4e18;
+  letter-spacing: 0.06em;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── START button ─────────────────────────────────────────── */
+.vr-start-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.vr-start-btn {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #2e7d4f;
+  background: linear-gradient(135deg, #1a6b3c, #0a4323);
+  color: #f0fff2;
+  font-family: 'Aboreto', cursive;
+  font-size: clamp(1.4rem, 5vw, 1.8rem);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(13, 78, 24, 0.3);
+  transition: transform 0.15s, filter 0.15s, box-shadow 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vr-start-btn:hover:not(:disabled) {
+  transform: scale(1.04);
+  filter: brightness(1.12);
+  box-shadow: 0 12px 36px rgba(13, 78, 24, 0.38);
+}
+
+.vr-start-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.vr-start-btn--disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  font-size: 2rem;
+  animation: vr-pulse 1.2s ease-in-out infinite;
+}
+
+.vr-start-btn--success {
+  background: linear-gradient(135deg, #1e8a4a, #0f6630);
+  border-color: #4caf69;
+  font-size: 2.8rem;
+  box-shadow: 0 8px 28px rgba(13, 130, 50, 0.45);
+  pointer-events: none;
+}
+
+.vr-start-btn--failed {
+  background: linear-gradient(135deg, #7a2a2a, #5a1e1e);
+  border-color: #c06060;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+}
+
+.vr-start-btn--failed:hover {
+  filter: brightness(1.15);
+}
+
+@keyframes vr-pulse {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}
+
+/* ── Status bar ───────────────────────────────────────────── */
+.vr-status-bar {
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  background: linear-gradient(180deg, #0f5f32, #0a4323);
+  transition: background 0.3s;
+}
+
+.vr-status-bar--success {
+  background: linear-gradient(180deg, #1e8a4a, #0f6630);
+}
+
+.vr-status-bar--failed,
+.vr-status-bar--no-session {
+  background: linear-gradient(180deg, #7a2a2a, #5a1e1e);
+}
+
+.vr-status-label {
+  font-family: 'Aboreto', cursive;
+  font-size: 0.88rem;
+  color: #a8e6b8;
+  letter-spacing: 0.1em;
+}
+
+.vr-status-bar--success .vr-status-label { color: #c8f0d0; }
+.vr-status-bar--failed .vr-status-label,
+.vr-status-bar--no-session .vr-status-label { color: #f5c0c0; }
+
+/* ── Status messages ──────────────────────────────────────── */
+.vr-messages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: center;
+}
+
+.vr-msg {
+  margin: 0;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #2a5c3a;
+}
+
+.vr-msg--success { color: #0d6e2a; font-weight: 600; }
+.vr-msg--failed { color: #c0392b; }
+.vr-msg--no-session { color: #7a4a00; }
+.vr-msg--checking { color: #1a5c35; font-style: italic; }
+
+/* ── Footer dots ──────────────────────────────────────────── */
+.vr-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 1.1rem 0 1.5rem;
+}
+
+.vr-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c5d9c9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: #3a6b4a;
+}
+
+.vr-dot--icon {
+  background: transparent;
+  border: 1.5px solid #7aab87;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+}
+
+.vr-dot--active { background: #0d4e18; }

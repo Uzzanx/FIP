@@ -1,0 +1,168 @@
+.lc-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-family: Georgia, 'Times New Roman', serif;
+  background:
+    /* decorative leaf blobs */
+    radial-gradient(ellipse 38% 55% at 88% 18%, rgba(13, 78, 24, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 45% at 10% 38%, rgba(13, 78, 24, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 50% at 80% 72%, rgba(13, 78, 24, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 28% 40% at 15% 82%, rgba(13, 78, 24, 0.06) 0%, transparent 70%),
+    #f3f1e9;
+}
+
+/* ── Header (shared styles reused from HomePage) ─────────── */
+.top-strip {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1rem;
+  border-bottom: 2px solid #8fb595;
+  background: linear-gradient(180deg, #0f5f32, #0a4323);
+}
+
+.brand-mark {
+  position: absolute;
+  left: 1rem;
+  display: grid;
+  align-items: center;
+}
+
+.brand-mark__img {
+  display: block;
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+.top-strip__links {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.top-strip__links a {
+  color: #f5fff6;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.top-strip__links a:hover {
+  color: #d5f2d8;
+}
+
+.lc-back-btn {
+  position: absolute;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #f5fff6;
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.2rem 0.4rem;
+}
+
+.lc-back-btn:hover {
+  color: #d5f2d8;
+}
+
+/* ── Main content ─────────────────────────────────────────── */
+.lc-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.5rem 1rem 2rem;
+}
+
+.lc-title {
+  font-family: 'ABeeZee', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 400;
+  color: #1a5c35;
+  letter-spacing: 0.06em;
+  margin: 0 0 2.2rem;
+  text-align: center;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.lc-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+.lc-btn {
+  width: 100%;
+  padding: 0.65rem 1.2rem;
+  border: 2px solid #2e7d4f;
+  border-radius: 50px;
+  background: linear-gradient(180deg, #1a6b3c, #114d2b);
+  color: #f0fff2;
+  font-family: 'ABeeZee', sans-serif;
+  font-size: clamp(0.8rem, 2.2vw, 0.92rem);
+  font-weight: 400;
+  cursor: pointer;
+  transition: filter 0.18s;
+  text-align: center;
+}
+
+.lc-btn:hover {
+  filter: brightness(1.12);
+}
+
+.lc-btn--staff {
+  margin-top: 0.6rem;
+  background: transparent;
+  border-color: #2e7d4f;
+  color: #1a5c35;
+}
+
+.lc-btn--staff:hover {
+  background: rgba(13, 78, 24, 0.07);
+  filter: none;
+}
+
+/* ── Footer dots ──────────────────────────────────────────── */
+.lc-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 1.2rem 0 1.6rem;
+}
+
+.lc-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c5d9c9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: #3a6b4a;
+}
+
+.lc-dot--icon {
+  background: transparent;
+  border: 1.5px solid #7aab87;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+}
+
+.lc-dot--active {
+  background: #0d4e18;
+}
