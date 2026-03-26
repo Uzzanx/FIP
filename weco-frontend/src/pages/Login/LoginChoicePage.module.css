@@ -139,3 +139,13 @@
 }
 .page__dot--active { background: #1e3520; color: #fff; border-color: #1e3520; }
 
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 360px) {
+  .page__main { padding: 24px 14px; }
+  .page__title { letter-spacing: 1px; }
+}
+
+@media (min-width: 769px) {
+  .page__main { padding: 80px 20px; }
+}
+

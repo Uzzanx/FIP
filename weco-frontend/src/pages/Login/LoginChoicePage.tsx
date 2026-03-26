@@ -1,9 +1,24 @@
 import { Link, useNavigate } from 'react-router-dom'
 import headerLogo from '../../assets/header-logo.png'
+import LanguageToggle from '../../components/LanguageToggle/LanguageToggle'
+import { useLanguage } from '../../i18n/LanguageContext'
 import styles from './LoginChoicePage.module.css'
 
 export default function LoginChoicePage() {
+  const { locale } = useLanguage()
+  const ru = locale === 'ru'
   const navigate = useNavigate()
+
+  const text = {
+    home: ru ? 'Главная' : 'Home',
+    profile: ru ? 'Профиль' : 'Profile',
+    back: ru ? 'Назад' : 'Back',
+    hello: ru ? 'ПРИВЕТ!' : 'HELLO!',
+    loginExisting: ru ? 'Войти (в существующий аккаунт)' : 'Log in (by existing account)',
+    createAccount: ru ? 'Создать новый аккаунт' : 'Create a new account',
+    guest: ru ? 'Продолжить как гость' : 'Continue as a guest',
+    staff: ru ? 'Только для персонала' : 'For staff only',
+  }
 
   return (
     <div className={styles['page']}>
@@ -12,34 +27,35 @@ export default function LoginChoicePage() {
           <img src={headerLogo} alt="WEco" className={styles['page__logo-img']} />
         </div>
         <nav className={styles['page__nav']}>
-          <Link to="/">Home</Link>
-          <Link to="/profile">Profile</Link>
+          <Link to="/">{text.home}</Link>
+          <Link to="/profile">{text.profile}</Link>
         </nav>
-        <button className={styles['page__back']} onClick={() => navigate(-1)} aria-label="Back">
+        <LanguageToggle />
+        <button className={styles['page__back']} onClick={() => navigate(-1)} aria-label={text.back}>
           &#8592;
         </button>
       </header>
 
       <main className={styles['page__main']}>
-        <h1 className={styles['page__title']}>HELLO!</h1>
+        <h1 className={styles['page__title']}>{text.hello}</h1>
         <div className={styles['page__choices']}>
           <button className={styles['page__btn']} onClick={() => navigate('/login/form')}>
-            Log in (by existing account)
+            {text.loginExisting}
           </button>
           <button className={styles['page__btn']} onClick={() => navigate('/register')}>
-            Create a new account
+            {text.createAccount}
           </button>
           <button
             className={styles['page__btn'] + ' ' + styles['page__btn--ghost']}
             onClick={() => navigate('/')}
           >
-            Continue as a guest
+            {text.guest}
           </button>
           <button
             className={styles['page__btn'] + ' ' + styles['page__btn--staff']}
             onClick={() => navigate('/staff')}
           >
-            For staff only
+            {text.staff}
           </button>
         </div>
       </main>

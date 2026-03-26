@@ -2,9 +2,13 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import headerLogo from '../../assets/header-logo.png'
 import { register } from '../../api/auth'
+import LanguageToggle from '../../components/LanguageToggle/LanguageToggle'
+import { useLanguage } from '../../i18n/LanguageContext'
 import styles from './RegisterPage.module.css'
 
 export default function RegisterPage() {
+  const { locale } = useLanguage()
+  const ru = locale === 'ru'
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -12,10 +16,29 @@ export default function RegisterPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  const text = {
+    home: ru ? 'Главная' : 'Home',
+    login: ru ? 'Вход' : 'Login',
+    back: ru ? 'Назад' : 'Back',
+    hello: ru ? 'ПРИВЕТ!' : 'HELLO!',
+    yourName: ru ? 'Ваше имя' : 'Your name',
+    createPassword: ru ? 'Придумайте пароль' : 'Create a password',
+    repeatPassword: ru ? 'Повторите пароль' : 'Repeat the password',
+    creating: ru ? 'Создаем...' : 'Creating...',
+    createAccount: ru ? 'СОЗДАТЬ АККАУНТ' : 'CREATE ACCOUNT',
+    haveAccount: ru ? 'Уже есть аккаунт?' : 'Already have an account?',
+    logIn: ru ? 'Войти' : 'Log in',
+    allFields: ru ? 'Все поля обязательны.' : 'All fields are required.',
+    passwordLength: ru ? 'Пароль должен быть не менее 6 символов.' : 'Password must be at least 6 characters.',
+    passwordMatch: ru ? 'Пароли не совпадают.' : 'Passwords do not match.',
+    registrationFailed: ru ? 'Регистрация не удалась.' : 'Registration failed.',
+    createdMessage: ru ? 'Аккаунт создан! Пожалуйста, войдите.' : 'Account created! Please log in.',
+  }
+
   const validate = (): string => {
-    if (!username.trim() || !password.trim() || !confirm.trim()) return 'All fields are required.'
-    if (password.length < 6) return 'Password must be at least 6 characters.'
-    if (password !== confirm) return 'Passwords do not match.'
+    if (!username.trim() || !password.trim() || !confirm.trim()) return text.allFields
+    if (password.length < 6) return text.passwordLength
+    if (password !== confirm) return text.passwordMatch
     return ''
   }
 
@@ -27,9 +50,9 @@ export default function RegisterPage() {
     setLoading(true)
     try {
       await register(username, password)
-      navigate('/login/form', { state: { message: 'Account created! Please log in.' } })
+      navigate('/login/form', { state: { message: text.createdMessage } })
     } catch (err: unknown) {
-      setError((err as Error).message || 'Registration failed.')
+      setError((err as Error).message || text.registrationFailed)
     } finally {
       setLoading(false)
     }
@@ -42,21 +65,22 @@ export default function RegisterPage() {
           <img src={headerLogo} alt="WEco" className={styles['page__logo-img']} />
         </div>
         <nav className={styles['page__nav']}>
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
+          <Link to="/">{text.home}</Link>
+          <Link to="/login">{text.login}</Link>
         </nav>
-        <button className={styles['page__back']} onClick={() => navigate(-1)} aria-label="Back">
+        <LanguageToggle />
+        <button className={styles['page__back']} onClick={() => navigate(-1)} aria-label={text.back}>
           &#8592;
         </button>
       </header>
 
       <main className={styles['page__main']}>
-        <h1 className={styles['page__title']}>HELLO!</h1>
+        <h1 className={styles['page__title']}>{text.hello}</h1>
         <form className={styles['page__form']} onSubmit={handleSubmit} noValidate>
           <input
             className={styles['page__input']}
             type="text"
-            placeholder="Your name"
+            placeholder={text.yourName}
             value={username}
             onChange={e => { setUsername(e.target.value); setError('') }}
             autoComplete="username"
@@ -64,7 +88,7 @@ export default function RegisterPage() {
           <input
             className={styles['page__input']}
             type="password"
-            placeholder="Create a password"
+            placeholder={text.createPassword}
             value={password}
             onChange={e => { setPassword(e.target.value); setError('') }}
             autoComplete="new-password"
@@ -72,7 +96,7 @@ export default function RegisterPage() {
           <input
             className={styles['page__input']}
             type="password"
-            placeholder="Repeat the password"
+            placeholder={text.repeatPassword}
             value={confirm}
             onChange={e => { setConfirm(e.target.value); setError('') }}
             autoComplete="new-password"
@@ -83,11 +107,11 @@ export default function RegisterPage() {
             type="submit"
             disabled={!username || !password || !confirm || loading}
           >
-            {loading ? 'Creating...' : 'CREATE ACCOUNT'}
+            {loading ? text.creating : text.createAccount}
           </button>
         </form>
         <p className={styles['page__link']}>
-          Already have an account? <Link to="/login/form">Log in</Link>
+          {text.haveAccount} <Link to="/login/form">{text.logIn}</Link>
         </p>
       </main>
 

@@ -2,14 +2,36 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import headerLogo from '../../assets/header-logo.png'
 import { getActiveSession, startVerification } from '../../api/verify'
+import LanguageToggle from '../../components/LanguageToggle/LanguageToggle'
+import { useLanguage } from '../../i18n/LanguageContext'
 import styles from './VerifyPage.module.css'
 
 type Status = 'idle' | 'checking' | 'success' | 'failed' | 'no-session'
 
 export default function VerifyPage() {
+  const { locale } = useLanguage()
+  const ru = locale === 'ru'
   const navigate = useNavigate()
   const [status, setStatus] = useState<Status>('idle')
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const text = {
+    home: ru ? 'Главная' : 'Home',
+    profile: ru ? 'Профиль' : 'Profile',
+    back: ru ? 'Назад' : 'Back',
+    title: ru ? 'ПОДТВЕРЖДЕНИЕ' : 'VERIFICATION',
+    start: ru ? 'СТАРТ' : 'START',
+    retry: ru ? 'ПОВТОРИТЬ' : 'RETRY',
+    ready: ru ? 'ГОТОВО' : 'READY',
+    loading: ru ? 'ЗАГРУЗКА...' : 'LOADING...',
+    success: ru ? 'УСПЕХ' : 'SUCCESS',
+    failed: ru ? 'ОШИБКА' : 'FAILED',
+    noSession: ru ? 'НЕТ СЕССИИ' : 'NO SESSION',
+    checking: ru ? 'Идет проверка...' : 'Verification in progress...',
+    successMsg: ru ? 'Успех! Перенаправляем в профиль...' : 'Success! Redirecting to your profile...',
+    failedMsg: ru ? 'Проверка не пройдена.' : 'Verification failed.',
+    noSessionMsg: ru ? 'Нет активной сессии. Отсканируйте QR на боксе и попробуйте снова.' : 'No active session. Scan your QR on the box and try again.',
+  }
 
   // Cleanup on unmount — no leaks
   useEffect(() => {
@@ -81,19 +103,19 @@ export default function VerifyPage() {
   }
 
   const barLabel: Record<Status, string> = {
-    'idle': 'READY',
-    'checking': 'LOADING...',
-    'success': 'SUCCESS',
-    'failed': 'FAILED',
-    'no-session': 'NO SESSION',
+    'idle': text.ready,
+    'checking': text.loading,
+    'success': text.success,
+    'failed': text.failed,
+    'no-session': text.noSession,
   }
 
   const msgText: Record<Status, string> = {
     'idle': '',
-    'checking': 'Verification in progress...',
-    'success': 'Success! Redirecting to your profile...',
-    'failed': 'Verification failed.',
-    'no-session': 'No active session. Scan your QR on the box and try again.',
+    'checking': text.checking,
+    'success': text.successMsg,
+    'failed': text.failedMsg,
+    'no-session': text.noSessionMsg,
   }
 
   const msgClassMap: Record<Status, string> = {
@@ -111,21 +133,22 @@ export default function VerifyPage() {
           <img src={headerLogo} alt="WEco" className={styles['page__logo-img']} />
         </div>
         <nav className={styles['page__nav']}>
-          <Link to="/">Home</Link>
-          <Link to="/profile">Profile</Link>
+          <Link to="/">{text.home}</Link>
+          <Link to="/profile">{text.profile}</Link>
         </nav>
-        <button className={styles['page__back']} onClick={() => navigate(-1)} aria-label="Back">
+        <LanguageToggle />
+        <button className={styles['page__back']} onClick={() => navigate(-1)} aria-label={text.back}>
           &#8592;
         </button>
       </header>
 
       <main className={styles['page__main']}>
-        <h1 className={styles['page__title']}>VERIFICATION</h1>
+        <h1 className={styles['page__title']}>{text.title}</h1>
 
         <div className={styles['page__btn-wrap']}>
           {(status === 'idle' || status === 'no-session') && (
             <button className={styles['page__start-btn']} onClick={handleStart}>
-              START
+              {text.start}
             </button>
           )}
           {status === 'checking' && (
@@ -143,7 +166,7 @@ export default function VerifyPage() {
               className={styles['page__start-btn'] + ' ' + styles['page__start-btn--failed']}
               onClick={handleRetry}
             >
-              RETRY
+              {text.retry}
             </button>
           )}
         </div>

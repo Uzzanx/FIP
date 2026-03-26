@@ -78,6 +78,15 @@
   position: relative;
   z-index: 1;
 }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 360px) {
+  .page__main { padding: 24px 14px; }
+}
+
+@media (min-width: 769px) {
+  .page__main { padding: 80px 20px; }
+}
 .page__title {
   font-family: 'Aboreto', cursive;
   font-size: clamp(26px, 7vw, 36px);

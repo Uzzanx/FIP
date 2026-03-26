@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css'
 import { getMachines, getPickupLocations } from '../../api/machines'
 import type { Machine, PickupLocation } from '../../api/machines'
 import styles from './WEcoMap.module.css'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 // Fix Leaflet default icon in Vite — use DivIcon to avoid path issues
 const boxIcon = L.divIcon({
@@ -24,9 +25,12 @@ const pickupIcon = L.divIcon({
 })
 
 export default function WEcoMap() {
+  const { locale } = useLanguage()
+  const ru = locale === 'ru'
   const [machines, setMachines] = useState<Machine[]>([])
   const [locations, setLocations] = useState<PickupLocation[]>([])
   const [apiOk, setApiOk] = useState(true)
+  const mapHeight = window.innerWidth >= 769 ? '520px' : window.innerWidth <= 480 ? '260px' : '320px'
 
   useEffect(() => {
     Promise.all([getMachines(), getPickupLocations()]).then(([m, l]) => {
@@ -43,6 +47,7 @@ export default function WEcoMap() {
         zoom={12}
         scrollWheelZoom={false}
         className={styles['map__container']}
+        style={{ height: mapHeight }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -74,15 +79,17 @@ export default function WEcoMap() {
       <div className={styles['map__legend']}>
         <span className={styles['map__legend-item']}>
           <span className={styles['map__legend-dot'] + ' ' + styles['map__legend-dot--box']} />
-          Eco-boxes
+          {ru ? 'Эко-боксы' : 'Eco-boxes'}
         </span>
         <span className={styles['map__legend-item']}>
           <span className={styles['map__legend-dot'] + ' ' + styles['map__legend-dot--pickup']} />
-          Pickup locations
+          {ru ? 'Точки выдачи' : 'Pickup locations'}
         </span>
       </div>
       {!apiOk && (
-        <p className={styles['map__no-data']}>No locations available — backend may be offline.</p>
+        <p className={styles['map__no-data']}>
+          {ru ? 'Локации недоступны, возможно сервер сейчас офлайн.' : 'No locations available, backend may be offline.'}
+        </p>
       )}
     </div>
   )

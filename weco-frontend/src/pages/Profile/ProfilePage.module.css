@@ -187,6 +187,19 @@
 .page__modal-hint { font-size: 12px; color: #7a8a7a; }
 .page__modal-hint a { color: #1e3520; text-decoration: underline; }
 
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 360px) {
+  .page__main { padding: 16px 12px 24px; }
+  .page__points-value { font-size: 44px; }
+  .page__rewards-grid { grid-template-columns: repeat(2, 1fr); }
+  .page__qr-img { width: 130px; height: 130px; }
+}
+
+@media (min-width: 769px) {
+  .page__main { width: min(600px, 100%); }
+  .page__rewards-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}
+
 /* Verify link button */
 .page__verify-btn {
   width: 100%;

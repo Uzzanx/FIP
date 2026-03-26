@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from 'react'
 import styles from './Modal.module.css'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 interface Props {
   open: boolean
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function Modal({ open, onClose, children }: Props) {
+  const { locale } = useLanguage()
   const handleKey = useCallback(
     (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() },
     [onClose]
@@ -29,7 +31,11 @@ export default function Modal({ open, onClose, children }: Props) {
     <div className={styles['modal']} role="dialog" aria-modal="true">
       <div className={styles['modal__backdrop']} onClick={onClose} />
       <div className={styles['modal__box']}>
-        <button className={styles['modal__close']} onClick={onClose} aria-label="Close">
+        <button
+          className={styles['modal__close']}
+          onClick={onClose}
+          aria-label={locale === 'ru' ? 'Закрыть' : 'Close'}
+        >
           ×
         </button>
         {children}

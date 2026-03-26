@@ -175,3 +175,15 @@
 }
 .page__dot--active { background: #1e3520; color: #fff; border-color: #1e3520; }
 
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 400px) {
+  .page__main { padding: 16px 12px 24px; }
+  .page__grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .page__card-img { height: 70px; }
+}
+
+@media (min-width: 769px) {
+  .page__main { width: min(700px, 100%); }
+  .page__grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
+

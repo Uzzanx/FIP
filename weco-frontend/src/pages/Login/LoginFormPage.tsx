@@ -2,9 +2,13 @@ import { useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import headerLogo from '../../assets/header-logo.png'
 import { login } from '../../api/auth'
+import LanguageToggle from '../../components/LanguageToggle/LanguageToggle'
+import { useLanguage } from '../../i18n/LanguageContext'
 import styles from './LoginFormPage.module.css'
 
 export default function LoginFormPage() {
+  const { locale } = useLanguage()
+  const ru = locale === 'ru'
   const navigate = useNavigate()
   const location = useLocation()
   const successMsg = (location.state as { message?: string } | null)?.message ?? ''
@@ -13,6 +17,21 @@ export default function LoginFormPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+
+  const text = {
+    home: ru ? 'Главная' : 'Home',
+    login: ru ? 'Вход' : 'Login',
+    back: ru ? 'Назад' : 'Back',
+    hello: ru ? 'ПРИВЕТ!' : 'HELLO!',
+    username: ru ? 'Имя пользователя' : 'Username',
+    password: ru ? 'Пароль' : 'Password',
+    loggingIn: ru ? 'Входим...' : 'Logging in...',
+    logIn: ru ? 'ВОЙТИ' : 'LOG IN',
+    noAccount: ru ? 'Нет аккаунта?' : 'No account?',
+    register: ru ? 'Регистрация' : 'Register',
+    invalidCredentials: ru ? 'Неверное имя пользователя или пароль' : 'Invalid username or password',
+    loginFailed: ru ? 'Не удалось войти. Попробуйте еще раз.' : 'Login failed. Please try again.',
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -24,7 +43,7 @@ export default function LoginFormPage() {
       navigate('/profile', { replace: true })
     } catch (err: unknown) {
       const msg = (err as Error).message
-      setError(msg === 'invalid_credentials' ? 'Invalid username or password' : 'Login failed. Please try again.')
+      setError(msg === 'invalid_credentials' ? text.invalidCredentials : text.loginFailed)
     } finally {
       setLoading(false)
     }
@@ -37,22 +56,23 @@ export default function LoginFormPage() {
           <img src={headerLogo} alt="WEco" className={styles['page__logo-img']} />
         </div>
         <nav className={styles['page__nav']}>
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
+          <Link to="/">{text.home}</Link>
+          <Link to="/login">{text.login}</Link>
         </nav>
-        <button className={styles['page__back']} onClick={() => navigate(-1)} aria-label="Back">
+        <LanguageToggle />
+        <button className={styles['page__back']} onClick={() => navigate(-1)} aria-label={text.back}>
           &#8592;
         </button>
       </header>
 
       <main className={styles['page__main']}>
-        <h1 className={styles['page__title']}>HELLO!</h1>
+        <h1 className={styles['page__title']}>{text.hello}</h1>
         {successMsg && <p className={styles['page__success']}>{successMsg}</p>}
         <form className={styles['page__form']} onSubmit={handleSubmit} noValidate>
           <input
             className={styles['page__input']}
             type="text"
-            placeholder="Username"
+            placeholder={text.username}
             value={username}
             onChange={e => { setUsername(e.target.value); setError('') }}
             autoComplete="username"
@@ -60,7 +80,7 @@ export default function LoginFormPage() {
           <input
             className={styles['page__input']}
             type="password"
-            placeholder="Password"
+            placeholder={text.password}
             value={password}
             onChange={e => { setPassword(e.target.value); setError('') }}
             autoComplete="current-password"
@@ -71,11 +91,11 @@ export default function LoginFormPage() {
             type="submit"
             disabled={!username || !password || loading}
           >
-            {loading ? 'Logging in...' : 'LOG IN'}
+            {loading ? text.loggingIn : text.logIn}
           </button>
         </form>
         <p className={styles['page__link']}>
-          No account? <Link to="/register">Register</Link>
+          {text.noAccount} <Link to="/register">{text.register}</Link>
         </p>
       </main>
 

@@ -13,6 +13,14 @@
   overflow: hidden;
 }
 
+@media (min-width: 769px) {
+  .map__container { height: 520px; border-radius: 0; border-left: none; border-right: none; }
+}
+
+@media (max-width: 480px) {
+  .map__container { height: 260px; border-radius: 8px; }
+}
+
 .map__legend {
   display: flex;
   gap: 1.2rem;
