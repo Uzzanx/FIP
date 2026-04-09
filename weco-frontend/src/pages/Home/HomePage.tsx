@@ -110,7 +110,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className={styles['page']}>
+    <div className={styles['page'] + (ru ? ' ' + styles['page--ru'] : '')}>
       {/* Top header: logo + page links + arrows */}
       <header className={styles['page__header']}>
         <div className={styles['page__logo']}>
