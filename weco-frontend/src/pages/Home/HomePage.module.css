@@ -233,6 +233,40 @@
   max-width: 560px;
   margin-bottom: 6px;
 }
+
+.page__steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page__step-item {
+  border-left: 2px solid rgba(30, 53, 32, 0.18);
+  padding-left: 12px;
+}
+
+.page__step-title {
+  margin: 0 0 4px;
+  color: #1e3520;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.page__step-number {
+  font-weight: 800;
+}
+
+.page__step-text {
+  margin: 0;
+  color: #2a4020;
+  font-size: 16px;
+  line-height: 1.55;
+  max-width: 760px;
+}
 .page__locations-sub {
   font-size: 13px;
   color: #5a7a5a;
@@ -321,6 +355,10 @@
   }
   .page__section-title--light { text-align: center; }
   .page__section-text--light { text-align: center; max-width: 100%; }
+  .page__steps-list { gap: 10px; }
+  .page__step-item { padding-left: 10px; }
+  .page__step-title { font-size: 17px; }
+  .page__step-text { font-size: 15px; line-height: 1.6; }
   .page__about-tagline { text-align: center; }
   .page__about-logo-wrap { display: none; }
   .page__bonuses-leaf {

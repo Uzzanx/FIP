@@ -16,20 +16,22 @@ export default function HomePage() {
     navLogin: ru ? 'Вход/Регистрация' : 'Login/Sign in',
     navProfile: ru ? 'Профиль' : 'Profile',
     navContact: ru ? 'Контакты' : 'Contact',
+    navPartners: ru ? 'Партнеры' : 'Partners',
     back: ru ? 'Назад' : 'Back',
     forward: ru ? 'Вперед' : 'Forward',
     aboutUs: ru ? 'О НАС' : 'ABOUT US',
+    howItWorks: ru ? 'КАК ЭТО РАБОТАЕТ' : 'HOW IT WORKS',
     mission: ru ? 'НАША МИССИЯ' : 'OUR MISSION',
     locations: ru ? 'НАШИ ЛОКАЦИИ' : 'OUR LOCATIONS',
-    bonuses: ru ? 'О БОНУСАХ' : 'ABOUT BONUSES',
+    bonuses: ru ? 'БОНУСНАЯ СИСТЕМА WEco' : 'WEco BONUS SYSTEM',
     getBonus: ru ? 'ПОЛУЧАЙ БОНУС' : 'GET YOUR BONUS',
     yourBonus: ru ? 'ТВОЙ БОНУС' : 'YOUR BONUS',
     aboutP1: ru
       ? 'Каждый день в Кыргызстане выбрасываются тысячи пластиковых бутылок, и мы решили это изменить.'
       : 'Every day, thousands of plastic bottles are thrown away in Kyrgyzstan, and we decided to change it.',
     aboutP2: ru
-      ? 'Наши умные боксы, установленные в гипермаркетах, принимают бутылки и превращают их в бонусы и скидки от партнеров.'
-      : 'Our smart boxes, installed in hypermarkets, accept bottles and turn them into bonuses and discounts from partners.',
+      ? 'Наши умные боксы установлены в Places with high concentrations of people (shops, public places, shopping malls in the future), принимают бутылки и превращают их в бонусы и скидки от партнеров.'
+      : 'Our smart boxes are installed in Places with high concentrations of people (shops, public places, shopping malls in the future), accept bottles and turn them into bonuses and discounts from partners.',
     aboutP3: ru
       ? 'Сделаем Кыргызстан чище вместе.'
       : 'Let\'s make Kyrgyzstan cleaner together.',
@@ -39,18 +41,71 @@ export default function HomePage() {
       ? 'Наша миссия - формировать культуру ответственности, чтобы экология стала делом каждого.'
       : 'Our mission is to build a culture of responsibility so that ecology becomes everyone\'s business.',
     missionP2: ru ? 'Присоединяйся и стань частью этого!' : 'Join us and become part of it!',
+    steps: ru
+      ? [
+        {
+          title: 'Найдите ближайший WEco-бокс',
+          text: 'Используйте карту на сайте, чтобы выбрать удобную точку сбора в местах с высокой концентрацией людей.',
+        },
+        {
+          title: 'Отсканируйте QR-код',
+          text: 'На эко-боксе размещен уникальный QR-код. После сканирования система связывает сдачу бутылок с вашим личным аккаунтом.',
+        },
+        {
+          title: 'Сдайте пластиковые бутылки',
+          text: 'Поместите пустые пластиковые бутылки и крышки в бокс для дальнейшей сортировки и переработки.',
+        },
+        {
+          title: 'Получите бонусные баллы',
+          text: 'За каждую сданную бутылку на ваш аккаунт автоматически начисляются эко-баллы.',
+        },
+        {
+          title: 'Обменивайте баллы на выгоды',
+          text: 'Накопленные баллы можно использовать для получения скидок, подарков и специальных предложений от наших партнеров.',
+        },
+        {
+          title: 'Следите за своим вкладом',
+          text: 'В личном кабинете отображается количество сданного пластика, накопленные баллы и ваш экологический вклад.',
+        },
+      ]
+      : [
+        {
+          title: 'Find the nearest WEco box',
+          text: 'Use the map on the website to choose a convenient collection point in places with high concentrations of people.',
+        },
+        {
+          title: 'Scan the QR code',
+          text: 'Each eco-box has a unique QR code. After scanning, the system links bottle returns to your personal account.',
+        },
+        {
+          title: 'Return plastic bottles',
+          text: 'Place empty plastic bottles and caps into the box for sorting and recycling.',
+        },
+        {
+          title: 'Get bonus points',
+          text: 'For every returned bottle, eco-points are automatically credited to your account.',
+        },
+        {
+          title: 'Exchange points for benefits',
+          text: 'Use your points for discounts, gifts, and special offers from our partners.',
+        },
+        {
+          title: 'Track your impact',
+          text: 'In your profile, you can see collected plastic totals, bonus points, and your eco impact.',
+        },
+      ],
     bonusP1: ru
-      ? 'Пустые пластиковые бутылки принимаются в эко-боксах WECO, установленных в гипермаркетах-партнерах.'
-      : 'Empty plastic bottles are accepted in WECO eco-boxes installed in partner hypermarkets.',
+      ? 'WEco использует накопительную программу лояльности, знакомую пользователям по сервисам крупных компаний.'
+      : 'WEco uses a loyalty points model familiar to users of major retail and service brands.',
     bonusP2: ru
-      ? 'Устройство сканирует QR-код, который связывает транзакцию с личным аккаунтом пользователя.'
-      : 'The device scans a QR code, which links the transaction to the user\'s individual account.',
+      ? 'За каждую сданную пластиковую бутылку пользователь получает эко-баллы, которые автоматически начисляются в личный аккаунт после сканирования QR-кода.'
+      : 'For each returned plastic bottle, users receive eco-points that are automatically added to their account after QR verification.',
     bonusP3: ru
-      ? 'После приема бутылок система начисляет бонусные баллы, которые можно обменять на скидки и привилегии от партнеров программы.'
-      : 'After accepting the bottles, the system awards bonus points that can be exchanged for discounts and privileges from program partners.',
+      ? 'Система работает по принципу «действие = вознаграждение»: чем больше пластика пользователь сдает, тем больше баллов накапливает.'
+      : 'The system follows the principle of action equals reward: the more plastic users return, the more points they collect.',
     bonusP4: ru
-      ? 'Переработка становится удобным и выгодным способом заботы об окружающей среде.'
-      : 'The recycling process becomes a convenient and profitable way to care for the environment.',
+      ? 'Такой подход делает экологичное поведение простым, привычным и выгодным, как в популярных бонусных программах.'
+      : 'This approach makes sustainable behavior simple, familiar, and valuable, similar to popular loyalty programs.',
     locationsSub: ru ? 'Места, где можно найти наши боксы' : 'Places where you can find our boxes',
   }
 
@@ -65,6 +120,7 @@ export default function HomePage() {
           <a href="#top">{text.navHome}</a>
           <a href="#" onClick={e => { e.preventDefault(); navigate('/login') }}>{text.navLogin}</a>
           <a href="#" onClick={e => { e.preventDefault(); navigate(isAuth ? '/profile' : '/login') }}>{text.navProfile}</a>
+          <a href="#" onClick={e => { e.preventDefault(); navigate('/partners') }}>{text.navPartners}</a>
           <a href="#" onClick={e => { e.preventDefault(); navigate('/contact') }}>{text.navContact}</a>
         </nav>
         <LanguageToggle />
@@ -77,6 +133,7 @@ export default function HomePage() {
       {/* Sub-nav: section anchors */}
       <nav className={styles['page__subnav']}>
         <a href="#about">{text.aboutUs}</a>
+        <a href="#how-it-works">{text.howItWorks}</a>
         <a href="#mission">{text.mission}</a>
         <a href="#locations">{text.locations}</a>
         <a href="#bonuses">{text.bonuses}</a>
@@ -117,6 +174,20 @@ export default function HomePage() {
           {text.missionP1}
         </p>
         <p className={styles['page__section-text']}>{text.missionP2}</p>
+      </section>
+
+      <section id="how-it-works" className={styles['page__section']}>
+        <h2 className={styles['page__section-title']}>{text.howItWorks}</h2>
+        <ol className={styles['page__steps-list']}>
+          {text.steps.map((step, index) => (
+            <li key={step.title} className={styles['page__step-item']}>
+              <p className={styles['page__step-title']}>
+                <span className={styles['page__step-number']}>{index + 1}.</span> {step.title}
+              </p>
+              <p className={styles['page__step-text']}>{step.text}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section id="bonuses" className={styles['page__section--bonuses']}>

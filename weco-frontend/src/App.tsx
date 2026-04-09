@@ -10,6 +10,7 @@ import VerifyPage from './pages/Verify/VerifyPage'
 import StaffPage from './pages/Staff/StaffPage'
 import { LanguageProvider } from './i18n/LanguageContext'
 import ContactPage from './pages/Contact/ContactPage'
+import PartnersPage from './pages/Partners/PartnersPage'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/staff" element={<StaffPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/partners" element={<PartnersPage />} />
           <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
           <Route path="/rewards" element={<ProtectedRoute><RewardsPage /></ProtectedRoute>} />
           <Route path="/verify" element={<ProtectedRoute><VerifyPage /></ProtectedRoute>} />

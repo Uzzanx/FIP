@@ -13,6 +13,7 @@ export default function ContactPage() {
     title: ru ? 'КОНТАКТЫ' : 'CONTACTS',
     home: ru ? 'Главная' : 'Home',
     profile: ru ? 'Профиль' : 'Profile',
+    partners: ru ? 'Партнеры' : 'Partners',
     contact: ru ? 'Контакты' : 'Contact',
     back: ru ? 'Назад' : 'Back',
     email: ru ? 'Почта' : 'Email',
@@ -33,6 +34,7 @@ export default function ContactPage() {
         <nav className={styles['page__nav']}>
           <Link to="/">{text.home}</Link>
           <Link to="/profile">{text.profile}</Link>
+          <Link to="/partners">{text.partners}</Link>
           <Link to="/contact" aria-current="page">{text.contact}</Link>
         </nav>
         <LanguageToggle />

@@ -1,0 +1,332 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f3ea;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.page::after {
+  content: '';
+  position: fixed;
+  bottom: -60px;
+  right: -80px;
+  width: 520px;
+  height: 520px;
+  background: url('../../assets/Vector.png') no-repeat center / contain;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page__header {
+  background: linear-gradient(90deg, #1a2e1c 0%, #243d27 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  height: 48px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  gap: 10px;
+}
+
+.page__logo { display: flex; align-items: center; }
+.page__logo-img { height: 52px; width: auto; }
+
+.page__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.page__nav a {
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  font-family: 'ABeeZee', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.page__nav a:hover,
+.page__nav a[aria-current='page'] {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.page__back {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.page__back:hover { background: rgba(255,255,255,0.1); }
+
+.page__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0 auto;
+  padding: 26px 0 20px;
+}
+
+.page__hero {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+  padding: 0 18px;
+}
+
+.page__title {
+  font-family: 'Aboreto', cursive;
+  font-size: clamp(30px, 7.2vw, 56px);
+  color: #1e3520;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  margin: 0;
+  text-align: center;
+}
+
+.page--ru .page__title,
+.page--ru .page__section-title,
+.page--ru .page__section-title--light {
+  font-family: 'ABeeZee', 'Segoe UI', sans-serif;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.page--ru .page__section-text--light,
+.page--ru .page__impact-list,
+.page--ru .page__benefits,
+.page--ru .page__card-hint,
+.page--ru .page__cta {
+  font-family: 'ABeeZee', 'Segoe UI', sans-serif;
+}
+
+.page__impact {
+  margin-bottom: 18px;
+  background: #f0efe7;
+  border: 1px solid rgba(30,53,32,0.12);
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.page__section-title {
+  margin: 0 0 10px;
+  font-family: 'Aboreto', cursive;
+  font-size: 19px;
+  color: #1e3520;
+  letter-spacing: 0.05em;
+}
+
+.page__impact-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #224022;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.page__partners {
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.page__partners-leaf {
+  background: linear-gradient(145deg, #1e3520 0%, #2d4d30 55%, #1e3520 100%);
+  border-radius: 50% 50% 50% 50% / 20% 20% 20% 20%;
+  padding: 52px 40px 52px;
+  min-height: 260px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+}
+
+.page__partners-leaf::before {
+  content: '';
+  position: absolute;
+  top: -34px;
+  right: -34px;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+
+.page__section-title--light {
+  margin: 0 0 10px;
+  font-family: 'Aboreto', cursive;
+  font-size: 21px;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.page__partners-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.page__section-text--light {
+  margin: 0 0 8px;
+  color: rgba(245, 249, 245, 0.9);
+  font-size: 14px;
+  line-height: 1.65;
+  max-width: 700px;
+}
+
+.page__benefits {
+  margin: 0 0 16px;
+  padding-left: 19px;
+  color: rgba(245, 249, 245, 0.9);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.page__cta {
+  border: none;
+  border-radius: 999px;
+  background: #f5f3ea;
+  color: #1e3520;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+  padding: 12px 22px;
+  cursor: pointer;
+}
+
+.page__cta:hover { opacity: 0.9; }
+
+.page__footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 12px 28px;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.page__dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #1e3520;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e3520;
+  flex-shrink: 0;
+}
+
+.page__dot-link {
+  text-decoration: none;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.page__dot-link:hover,
+.page__dot-link:focus-visible {
+  background: #1e3520;
+  color: #fff;
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.page__dot--active { background: #1e3520; color: #fff; border-color: #1e3520; }
+
+@media (max-width: 520px) {
+  .page__header { gap: 8px; }
+
+  .page__nav {
+    gap: 10px;
+    font-size: 10px;
+  }
+
+  .page__content {
+    padding: 20px 0 16px;
+  }
+
+  .page__title {
+    font-size: clamp(28px, 10.2vw, 40px);
+  }
+
+  .page__impact {
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .page__section-title {
+    font-size: 17px;
+  }
+
+  .page__impact-list,
+  .page__section-text--light,
+  .page__benefits {
+    font-size: 13px;
+    line-height: 1.62;
+  }
+
+  .page__partners-leaf {
+    border-radius: 16px;
+    padding: 24px 16px;
+    min-height: unset;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page__partners-leaf::before { display: none; }
+
+  .page__section-title--light {
+    font-size: 19px;
+  }
+
+  .page--ru .page__title {
+    font-size: clamp(28px, 9.2vw, 36px);
+    line-height: 1.2;
+  }
+
+  .page--ru .page__section-title,
+  .page--ru .page__section-title--light {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .page--ru .page__impact-list,
+  .page--ru .page__section-text--light,
+  .page--ru .page__benefits {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .page--ru .page__cta {
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+}
