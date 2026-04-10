@@ -8,16 +8,7 @@
 }
 
 .page::after {
-  content: '';
-  position: fixed;
-  bottom: -50px;
-  right: -70px;
-  width: 500px;
-  height: 500px;
-  background: var(--weco-watermark) no-repeat center / contain;
-  opacity: 0.09;
-  pointer-events: none;
-  z-index: 0;
+  content: none;
 }
 
 

@@ -10,16 +10,7 @@
 
 /* Leaf watermark */
 .page::after {
-  content: '';
-  position: fixed;
-  bottom: -60px;
-  right: -80px;
-  width: 520px;
-  height: 520px;
-  background: var(--weco-watermark) no-repeat center / contain;
-  opacity: 0.08;
-  pointer-events: none;
-  z-index: 0;
+  content: none;
 }
 
 /* ── Top header ───────────────────────────────────────────── */
@@ -173,17 +164,13 @@
 }
 .page__about-logo-wrap {
   flex-shrink: 0;
-  width: 42%;
-  max-width: 480px;
-  min-width: 200px;
+  width: 38%;
+  max-width: 420px;
+  min-width: 180px;
   min-height: 220px;
   align-self: stretch;
-  background: var(--weco-about-logo) no-repeat bottom right / 150%;
+  background: url('/about-logo-CAfXTzmQ.png') no-repeat center right / contain;
   position: relative;
-}
-
-.page__about-logo {
-  display: none;
 }
 .page__about-tagline {
   font-style: italic;
