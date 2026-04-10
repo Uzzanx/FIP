@@ -16,7 +16,7 @@
   right: -80px;
   width: 520px;
   height: 520px;
-  background: url('../../assets/Vector.png') no-repeat center / contain;
+  background: var(--weco-watermark) no-repeat center / contain;
   opacity: 0.08;
   pointer-events: none;
   z-index: 0;
@@ -178,7 +178,7 @@
   min-width: 200px;
   min-height: 220px;
   align-self: stretch;
-  background: url('../../assets/about-logo.png') no-repeat bottom right / 150%;
+  background: var(--weco-about-logo) no-repeat bottom right / 150%;
   position: relative;
 }
 

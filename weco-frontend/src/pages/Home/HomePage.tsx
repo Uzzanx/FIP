@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
+import type { CSSProperties } from 'react'
 import headerLogo from '../../assets/header-logo.png'
+import aboutLogo from '../../assets/about-logo.png'
 import WEcoMap from '../../components/Map/WEcoMap'
 import LanguageToggle from '../../components/LanguageToggle/LanguageToggle'
 import { useLanguage } from '../../i18n/LanguageContext'
@@ -10,6 +12,9 @@ export default function HomePage() {
   const ru = locale === 'ru'
   const navigate = useNavigate()
   const isAuth = !!localStorage.getItem('token')
+  const pageStyle = {
+    '--weco-about-logo': `url(${aboutLogo})`,
+  } as CSSProperties
 
   const text = {
     navHome: ru ? 'Главная' : 'Home',
@@ -110,7 +115,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className={styles['page'] + (ru ? ' ' + styles['page--ru'] : '')}>
+    <div className={styles['page'] + (ru ? ' ' + styles['page--ru'] : '')} style={pageStyle}>
       {/* Top header: logo + page links + arrows */}
       <header className={styles['page__header']}>
         <div className={styles['page__logo']}>
