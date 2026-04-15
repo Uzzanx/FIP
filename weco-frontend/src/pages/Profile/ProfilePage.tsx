@@ -75,14 +75,14 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className={styles['page']}>
+      <div className={styles['page'] + (ru ? ' ' + styles['page--ru'] : '')}>
         <div className={styles['page__loading']}>{text.loading}</div>
       </div>
     )
   }
 
   return (
-    <div className={styles['page']}>
+    <div className={styles['page'] + (ru ? ' ' + styles['page--ru'] : '')}>
       <header className={styles['page__header']}>
         <div className={styles['page__logo']}>
           <img src={headerLogo} alt="WEco" className={styles['page__logo-img']} />

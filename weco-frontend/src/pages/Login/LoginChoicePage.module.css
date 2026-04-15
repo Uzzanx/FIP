@@ -137,6 +137,12 @@
 }
 
 @media (max-width: 520px) {
+  .page--ru * {
+    font-family: 'ABeeZee', 'Segoe UI', sans-serif;
+    font-style: normal;
+    letter-spacing: 0.01em;
+  }
+
   .page--ru .page__title,
   .page--ru .page__btn {
     font-family: 'ABeeZee', 'Segoe UI', sans-serif;

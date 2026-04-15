@@ -479,17 +479,17 @@
 
 @media (max-width: 375px) {
   .page__header {
-    height: 44px;
-    padding: 0 8px;
-    gap: 6px;
+    height: 40px;
+    padding: 0 6px;
+    gap: 4px;
   }
 
   .page__logo-img {
-    height: 30px;
+    height: 26px;
   }
 
   .page__nav {
-    gap: 6px;
+    gap: 5px;
     font-size: 9px;
     justify-content: center;
     min-width: 0;
@@ -510,12 +510,15 @@
   }
 
   .page__header > div:last-child {
-    transform: scale(0.78);
+    transform: scale(0.72);
     transform-origin: right center;
   }
 
   .page__subnav {
-    top: 44px;
+    top: 40px;
+    gap: 8px;
+    font-size: 9px;
+    padding: 6px 8px;
   }
 }
 

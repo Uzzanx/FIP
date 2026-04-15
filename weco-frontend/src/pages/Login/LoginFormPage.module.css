@@ -153,3 +153,11 @@
 }
 .page__dot--active { background: #1e3520; color: #fff; border-color: #1e3520; }
 
+@media (max-width: 520px) {
+  .page--ru * {
+    font-family: 'ABeeZee', 'Segoe UI', sans-serif;
+    font-style: normal;
+    letter-spacing: 0.01em;
+  }
+}
+

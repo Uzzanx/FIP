@@ -90,7 +90,7 @@ export default function StaffPage() {
   const barClass = styles['page__status-bar'] + (loading ? ' ' + styles['page__status-bar--loading'] : message?.kind === 'ok' && confirmed ? ' ' + styles['page__status-bar--ok'] : '')
 
   return (
-    <div className={styles['page']}>
+    <div className={styles['page'] + (ru ? ' ' + styles['page--ru'] : '')}>
       <header className={styles['page__header']}>
         <div className={styles['page__logo']}>
           <img src={headerLogo} alt="WEco" className={styles['page__logo-img']} />

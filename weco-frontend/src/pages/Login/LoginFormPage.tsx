@@ -50,7 +50,7 @@ export default function LoginFormPage() {
   }
 
   return (
-    <div className={styles['page']}>
+    <div className={styles['page'] + (ru ? ' ' + styles['page--ru'] : '')}>
       <header className={styles['page__header']}>
         <div className={styles['page__logo']}>
           <img src={headerLogo} alt="WEco" className={styles['page__logo-img']} />
