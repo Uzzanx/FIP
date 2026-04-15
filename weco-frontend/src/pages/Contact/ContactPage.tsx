@@ -106,7 +106,7 @@ export default function ContactPage() {
 
       <footer className={styles['page__footer']}>
         <a
-          className={styles['page__dot'] + ' ' + styles['page__dot-link']}
+          className={styles['page__dot']}
           href="https://www.instagram.com/weco_kg/"
           target="_blank"
           rel="noreferrer"
@@ -118,8 +118,7 @@ export default function ContactPage() {
             <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
           </svg>
         </a>
-        <span className={styles['page__dot']} />
-        <span className={styles['page__dot'] + ' ' + styles['page__dot--active']} />
+        <Link className={styles['page__dot']} to="/contact" aria-label={ru ? 'Контакты' : 'Contact'}>!</Link>
       </footer>
     </div>
   )

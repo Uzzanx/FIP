@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import headerLogo from '../../assets/header-logo.png'
 import WEcoMap from '../../components/Map/WEcoMap'
 import LanguageToggle from '../../components/LanguageToggle/LanguageToggle'
@@ -17,8 +17,6 @@ export default function HomePage() {
     navProfile: ru ? 'Профиль' : 'Profile',
     navContact: ru ? 'Контакты' : 'Contact',
     navPartners: ru ? 'Партнеры' : 'Partners',
-    back: ru ? 'Назад' : 'Back',
-    forward: ru ? 'Вперед' : 'Forward',
     aboutUs: ru ? 'О НАС' : 'ABOUT US',
     howItWorks: ru ? 'КАК ЭТО РАБОТАЕТ' : 'HOW IT WORKS',
     mission: ru ? 'НАША МИССИЯ' : 'OUR MISSION',
@@ -124,10 +122,6 @@ export default function HomePage() {
           <a href="#" onClick={e => { e.preventDefault(); navigate('/contact') }}>{text.navContact}</a>
         </nav>
         <LanguageToggle />
-        <div className={styles['page__header-arrows']}>
-          <button className={styles['page__arrow']} onClick={() => window.history.back()} aria-label={text.back}>&#8592;</button>
-          <button className={styles['page__arrow']} onClick={() => window.history.forward()} aria-label={text.forward}>&#8594;</button>
-        </div>
       </header>
 
       {/* Sub-nav: section anchors */}
@@ -154,17 +148,19 @@ export default function HomePage() {
 
       <section id="about" className={styles['page__section--about']}>
         <div className={styles['page__about-leaf']}>
-          <div className={styles['page__about-text']}>
-            <h2 className={styles['page__section-title--light']}>{text.aboutUs}</h2>
-            <p className={styles['page__section-text--light']}>
-              {text.aboutP1}
-            </p>
-            <p className={styles['page__section-text--light']}>{text.aboutP2}</p>
-            <p className={styles['page__section-text--light']}>{text.aboutP3}</p>
-            <p className={styles['page__section-text--light']}>{text.aboutP4}</p>
-            <p className={styles['page__about-tagline']}>{text.tagline}</p>
+          <h2 className={styles['page__section-title--light']}>{text.aboutUs}</h2>
+          <div className={styles['page__about-content']}>
+            <div className={styles['page__about-text']}>
+              <p className={styles['page__section-text--light']}>
+                {text.aboutP1}
+              </p>
+              <p className={styles['page__section-text--light']}>{text.aboutP2}</p>
+              <p className={styles['page__section-text--light']}>{text.aboutP3}</p>
+              <p className={styles['page__section-text--light']}>{text.aboutP4}</p>
+              <p className={styles['page__about-tagline']}>{text.tagline}</p>
+            </div>
+            <div className={styles['page__about-logo-wrap']} />
           </div>
-          <div className={styles['page__about-logo-wrap']} />
         </div>
       </section>
 
@@ -207,9 +203,8 @@ export default function HomePage() {
       </section>
 
       <footer className={styles['page__footer']}>
-        {/* Instagram */}
         <a
-          className={styles['page__dot'] + ' ' + styles['page__dot--icon'] + ' ' + styles['page__dot-link']}
+          className={styles['page__dot']}
           href="https://www.instagram.com/weco_kg/"
           target="_blank"
           rel="noreferrer"
@@ -221,14 +216,9 @@ export default function HomePage() {
             <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
           </svg>
         </a>
-        {/* TikTok */}
-        <span className={styles['page__dot'] + ' ' + styles['page__dot--icon']}>
-          <svg width="10" height="11" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.79a4.85 4.85 0 01-1.02-.1z"/>
-          </svg>
-        </span>
-        <span className={styles['page__dot']} />
-        <span className={styles['page__dot'] + ' ' + styles['page__dot--active']} />
+        <Link className={styles['page__dot']} to="/contact" aria-label={ru ? 'Контакты' : 'Contact'}>
+          !
+        </Link>
       </footer>
     </div>
   )

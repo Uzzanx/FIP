@@ -25,7 +25,7 @@
 }
 
 .page__logo { display: flex; align-items: center; }
-.page__logo-img { height: 52px; width: auto; }
+.page__logo-img { height: 38px; width: auto; }
 
 .page__nav {
   display: flex;
@@ -124,6 +124,7 @@
   font-size: 19px;
   color: #1e3520;
   letter-spacing: 0.05em;
+  text-align: center;
 }
 
 .page__impact-list {
@@ -170,6 +171,7 @@
   font-size: 21px;
   color: #fff;
   letter-spacing: 0.05em;
+  text-align: center;
 }
 
 .page__partners-text {
