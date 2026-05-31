@@ -189,6 +189,17 @@
 @media (min-width: 769px) {
   .page__main { width: min(600px, 100%); }
   .page__rewards-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+
+  .page__title { font-size: clamp(26px, 3vw, 36px); }
+  .page__username { font-size: 20px; }
+  .page__status { font-size: 14px; }
+  .page__use-btn { font-size: 16px; }
+  .page__section-label { font-size: 16px; }
+  .page__points-value { font-size: 64px; }
+  .page__points-sub { font-size: 14px; }
+  .page__steps li { font-size: 15px; }
+  .page__muted { font-size: 15px; }
+  .page__nav { font-size: 13px; gap: 20px; }
 }
 
 /* Verify link button */

@@ -166,5 +166,10 @@
 
 @media (min-width: 769px) {
   .page__main { padding: 80px 20px; }
+
+  .page__title { font-size: clamp(30px, 6vw, 48px); }
+  .page__btn { font-size: 15px; }
+  .page__btn--staff { font-size: 14px; }
+  .page__nav { font-size: 13px; gap: 20px; }
 }
 

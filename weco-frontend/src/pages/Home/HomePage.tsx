@@ -8,6 +8,12 @@ import styles from './HomePage.module.css'
 export default function HomePage() {
   const { locale } = useLanguage()
   const ru = locale === 'ru'
+  // Debug: log locale changes to help track untranslated content
+  // (temporary - can be removed after verification)
+  import.meta.env.DEV && (() => {
+    // eslint-disable-next-line no-console
+    console.debug('[HomePage] locale:', locale)
+  })()
   const navigate = useNavigate()
   const isAuth = !!localStorage.getItem('token')
 
@@ -28,7 +34,7 @@ export default function HomePage() {
       ? 'Каждый день в Кыргызстане выбрасываются тысячи пластиковых бутылок, и мы решили это изменить.'
       : 'Every day, thousands of plastic bottles are thrown away in Kyrgyzstan, and we decided to change it.',
     aboutP2: ru
-      ? 'Наши умные боксы установлены в Places with high concentrations of people (shops, public places, shopping malls in the future), принимают бутылки и превращают их в бонусы и скидки от партнеров.'
+      ? 'Наши умные боксы установлены в местах с высокой концентрацией людей (магазины, общественные пространства; в будущем — торговые центры), принимают бутылки и превращают их в бонусы и скидки от партнёров.'
       : 'Our smart boxes are installed in Places with high concentrations of people (shops, public places, shopping malls in the future), accept bottles and turn them into bonuses and discounts from partners.',
     aboutP3: ru
       ? 'Сделаем Кыргызстан чище вместе.'
@@ -111,9 +117,9 @@ export default function HomePage() {
     <div className={styles['page'] + (ru ? ' ' + styles['page--ru'] : '')}>
       {/* Top header: logo + page links + arrows */}
       <header className={styles['page__header']}>
-        <div className={styles['page__logo']}>
+        <Link className={styles['page__logo']} to="/" aria-label={text.navHome}>
           <img src={headerLogo} alt="WEco" className={styles['page__logo-img']} />
-        </div>
+        </Link>
         <nav className={styles['page__nav']}>
           <a href="#top">{text.navHome}</a>
           <a href="#" onClick={e => { e.preventDefault(); navigate('/login') }}>{text.navLogin}</a>

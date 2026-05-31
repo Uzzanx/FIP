@@ -323,3 +323,14 @@
     letter-spacing: 0.02em;
   }
 }
+
+@media (min-width: 769px) {
+  .page__title { font-size: clamp(26px, 3vw, 36px); }
+  .page__section-title { font-size: 24px; }
+  .page__section-title--light { font-size: 26px; }
+  .page__impact-list,
+  .page__section-text--light,
+  .page__benefits { font-size: 16px; line-height: 1.75; }
+  .page__cta { font-size: 15px; }
+  .page__nav { font-size: 13px; gap: 20px; }
+}

@@ -90,6 +90,14 @@
   text-align: center;
 }
 
+@media (min-width: 769px) {
+  .page__title { font-size: clamp(26px, 3vw, 36px); }
+  .page__start-btn { font-size: 16px; }
+  .page__status-bar { font-size: 14px; }
+  .page__message { font-size: 15px; }
+  .page__nav { font-size: 13px; gap: 20px; }
+}
+
 /* Code display (user's redemption code) */
 .page__code-display {
   background: #fff;

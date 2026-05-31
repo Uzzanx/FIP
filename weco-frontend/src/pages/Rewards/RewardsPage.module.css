@@ -176,6 +176,17 @@
 @media (min-width: 769px) {
   .page__main { width: min(700px, 100%); }
   .page__grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+
+  .page__title { font-size: clamp(26px, 3vw, 36px); }
+  .page__points-label { font-size: 16px; }
+  .page__points-value { font-size: 36px; }
+  .page__section-title { font-size: 20px; }
+  .page__muted { font-size: 16px; }
+  .page__card-title { font-size: 15px; }
+  .page__card-desc { font-size: 14px; }
+  .page__card-price { font-size: 15px; }
+  .page__card-btn { font-size: 13px; }
+  .page__nav { font-size: 13px; gap: 20px; }
 }
 
 @media (max-width: 520px) {

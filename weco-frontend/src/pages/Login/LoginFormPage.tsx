@@ -52,9 +52,9 @@ export default function LoginFormPage() {
   return (
     <div className={styles['page'] + (ru ? ' ' + styles['page--ru'] : '')}>
       <header className={styles['page__header']}>
-        <div className={styles['page__logo']}>
+        <Link className={styles['page__logo']} to="/" aria-label={text.home}>
           <img src={headerLogo} alt="WEco" className={styles['page__logo-img']} />
-        </div>
+        </Link>
         <nav className={styles['page__nav']}>
           <Link to="/">{text.home}</Link>
           <Link to="/login">{text.login}</Link>

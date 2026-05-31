@@ -84,6 +84,14 @@
   color: #1e3520;
   letter-spacing: 2px;
 }
+
+@media (min-width: 769px) {
+  .page__title { font-size: clamp(30px, 6vw, 48px); }
+  .page__input { font-size: 16px; }
+  .page__btn { font-size: 15px; }
+  .page__link { font-size: 15px; }
+  .page__nav { font-size: 13px; gap: 20px; }
+}
 .page__form {
   display: flex;
   flex-direction: column;

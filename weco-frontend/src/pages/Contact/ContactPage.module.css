@@ -206,6 +206,14 @@
   }
 }
 
+@media (min-width: 769px) {
+  .page__title { font-size: clamp(26px, 3vw, 36px); }
+  .page__card-label { font-size: clamp(20px, 2vw, 28px); }
+  .page__card-value { font-size: 16px; }
+  .page__card-hint { font-size: 13px; }
+  .page__nav { font-size: 13px; gap: 20px; }
+}
+
 @media (max-width: 520px) {
   .page__header { gap: 8px; }
 
