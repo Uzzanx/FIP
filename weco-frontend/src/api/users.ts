@@ -1,4 +1,4 @@
-import { apiFetch } from './client'
+import { apiFetch, resolveApiUrl } from './client'
 
 export interface UserProfile {
   id: number
@@ -8,11 +8,25 @@ export interface UserProfile {
 }
 
 export interface Redemption {
-  id: number
+  id: string
   code: string
   reward_id: number
   reward_title?: string
   reward_image?: string
+  reward_image_url?: string
+  reward_description?: string
+  created_at: string
+  expires_at: string
+  is_used: boolean
+}
+
+type RedemptionApiItem = {
+  id: string
+  code: string
+  reward_id: number
+  reward_title?: string
+  reward_image?: string
+  reward_image_url?: string
   reward_description?: string
   created_at: string
   expires_at: string
@@ -36,5 +50,13 @@ export async function getRedemptions(): Promise<Redemption[]> {
   const res = await apiFetch('/users/me/redemptions')
   if (!res.ok) throw new Error('Failed to fetch redemptions')
   const data = await res.json()
-  return Array.isArray(data) ? data : []
+  return Array.isArray(data)
+    ? (data as RedemptionApiItem[]).map((item) => ({
+        ...item,
+        id: String(item.id),
+        reward_image: resolveApiUrl(item.reward_image ?? item.reward_image_url),
+        reward_image_url: item.reward_image_url ?? item.reward_image,
+        is_used: Boolean(item.is_used),
+      }))
+    : []
 }

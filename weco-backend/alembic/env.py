@@ -12,7 +12,16 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from app.models import User, Transaction, RewardItem, VerificationSession
+from app.models import (
+    User,
+    Transaction,
+    RewardItem,
+    VerificationSession,
+    Machine,
+    Redemption,
+    PickupLocation,
+    PickupInventory,
+)
 from app.core.database import Base
 from app.core.config import settings
 

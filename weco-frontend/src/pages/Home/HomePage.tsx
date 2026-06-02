@@ -40,7 +40,7 @@ export default function HomePage() {
       ? 'Сделаем Кыргызстан чище вместе.'
       : 'Let\'s make Kyrgyzstan cleaner together.',
     aboutP4: ru ? 'Присоединяйтесь к нам!' : 'Join us!',
-    tagline: ru ? '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Сила WEco в чистой жизни' : '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Life is clean with WEco\'s force',
+    tagline: ru ? 'Сила WEco в чистой жизни' : 'Life is clean with WEco\'s force',
     missionP1: ru
       ? 'Наша миссия - формировать культуру ответственности, чтобы экология стала делом каждого.'
       : 'Our mission is to build a culture of responsibility so that ecology becomes everyone\'s business.',

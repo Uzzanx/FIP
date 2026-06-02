@@ -1,8 +1,9 @@
-import { apiFetch } from './client'
+import { apiFetch, resolveApiUrl } from './client'
 
 export interface PreviewResult {
   reward_title?: string
   reward_image?: string
+  reward_image_url?: string
   username?: string
   expires_at?: string
   stock?: number
@@ -16,7 +17,7 @@ export async function previewRedemption(
 ): Promise<{ ok: boolean; data?: PreviewResult; error?: string }> {
   const res = await apiFetch(
     '/staff/redemptions/preview',
-    { method: 'POST', body: JSON.stringify({ location_id: locationId, code }) },
+    { method: 'POST', body: JSON.stringify({ pickup_location_id: locationId, code }) },
     { 'X-STAFF-KEY': staffKey }
   )
   if (res.status === 404) return { ok: false, error: 'Code not found.' }
@@ -24,7 +25,14 @@ export async function previewRedemption(
   if (res.status === 410) return { ok: false, error: 'Code has expired.' }
   if (!res.ok) return { ok: false, error: 'Preview failed.' }
   const data = await res.json()
-  return { ok: true, data }
+  return {
+    ok: true,
+    data: {
+      ...data,
+      reward_image: resolveApiUrl(data.reward_image ?? data.reward_image_url),
+      reward_image_url: data.reward_image_url ?? data.reward_image,
+    },
+  }
 }
 
 export async function claimRedemption(
@@ -34,7 +42,7 @@ export async function claimRedemption(
 ): Promise<{ ok: boolean; error?: string }> {
   const res = await apiFetch(
     '/staff/redemptions/claim',
-    { method: 'POST', body: JSON.stringify({ location_id: locationId, code }) },
+    { method: 'POST', body: JSON.stringify({ pickup_location_id: locationId, code }) },
     { 'X-STAFF-KEY': staffKey }
   )
   if (res.status === 404) return { ok: false, error: 'Code not found.' }
