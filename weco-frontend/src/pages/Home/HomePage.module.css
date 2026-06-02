@@ -1,4 +1,4 @@
-﻿/* ── Page ─────────────────────────────────────────────────── */
+﻿﻿/* ── Page ─────────────────────────────────────────────────── */
 .page {
   min-height: 100vh;
   display: flex;
@@ -565,8 +565,8 @@
     flex-shrink: 0;
   }
 
-  .page__nav {
-    gap: 2px;
+.page__nav {
+    gap: 8px;
     font-size: 8px;
     justify-content: center;
     min-width: 0;
@@ -657,7 +657,6 @@
   }
 
   .page__nav {
-    gap: 2px;
     font-size: 9px;
     justify-content: center;
     min-width: 0;
@@ -718,7 +717,6 @@
   }
 
   .page__nav {
-    gap: 2px;
     font-size: 8px;
     justify-content: center;
     min-width: 0;
