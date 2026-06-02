@@ -19,27 +19,24 @@ WEco/
 
 ## Быстрый старт
 
-1. Запустить базу данных:
+## Локальный запуск через Docker
+
+1. `docker compose down -v`
+2. `docker compose up --build`
+3. Открыть `http://localhost:8000/health`
+4. Открыть `http://localhost:8000/docs`
+5. Открыть `http://localhost:5173`
+
+После первого запуска для тестовых данных:
+
 ```bash
-docker-compose up -d postgres
+docker compose exec backend python add_test_data.py
+docker compose exec backend python scripts/seed_pickup_locations.py
 ```
 
-2. Настроить backend:
-```bash
-cd weco-backend
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-alembic upgrade head
-uvicorn app.main:app --reload --port 8000
-```
+## Локальный запуск без Docker
 
-3. Настроить frontend:
-```bash
-cd weco-frontend
-npm install
-npm run dev
-```
+Если нужен ручной запуск для отладки, можно поднимать сервисы отдельно, но для обычной локальной работы рекомендуется Docker Compose.
 
 ## API Documentation
 

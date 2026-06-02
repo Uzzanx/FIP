@@ -168,6 +168,12 @@
   font-size: 12px;
   color: rgba(255,255,255,0.6);
   margin-top: 6px;
+  width: 100%;
+  display: block;
+  text-align: center;
+  align-self: center;
+  padding: 0;
+  transform: none;
 }
 
 /* Light text (inside dark sections) */
@@ -355,6 +361,7 @@
   .page__step-text { font-size: 15px; line-height: 1.6; }
   .page__about-tagline { text-align: center; }
   .page__about-logo-wrap { display: none; }
+  .page__about-leaf::before {display: none;}
   .page__bonuses-leaf {
     padding: 28px 16px 24px;
     border-radius: 0;
@@ -496,6 +503,7 @@
   .page__step-text { font-size: 15px; line-height: 1.6; }
   .page__about-tagline { text-align: center; }
   .page__about-logo-wrap { display: none; }
+  .page__about-leaf::before {display: none;}
   .page__bonuses-leaf {
     padding: 28px 16px 24px;
     border-radius: 0;
@@ -608,6 +616,10 @@
   }
 
   .page__about-logo-wrap {
+    display: none;
+  }
+
+  .page__about-leaf::before {
     display: none;
   }
 
