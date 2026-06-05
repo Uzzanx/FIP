@@ -10,6 +10,7 @@ from ..schemas.verification import (
     MachineScanRequest,
     VerificationSessionResponse,
     VerificationResultRequest,
+    MachineSessionStatusResponse,
 )
 from ..services.verification_service import VerificationService
 from ..services.auth_service import AuthService
@@ -57,6 +58,16 @@ async def machine_scan_qr(
     # Создаём новую сессию проверки
     session = await VerificationService.create_session(db, user, scan_data.machine_id)
     return session
+
+
+@router.get("/sessions/{session_id}", response_model=MachineSessionStatusResponse)
+async def get_machine_session_status(
+    session_id: str,
+    db: AsyncSession = Depends(get_db),
+    _: bool = Depends(verify_machine_access)
+):
+    """Status polling for WEcoBox after QR scan."""
+    return await VerificationService.get_session(db, session_id)
 
 
 @router.post("/sessions/result")

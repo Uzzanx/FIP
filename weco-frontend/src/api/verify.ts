@@ -1,7 +1,8 @@
 import { apiFetch } from './client'
 
 export interface VerifySession {
-  session_id: string
+  id?: string
+  session_id?: string
   status?: string
   is_bottle?: boolean
 }

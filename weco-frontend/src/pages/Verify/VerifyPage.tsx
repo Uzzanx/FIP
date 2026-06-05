@@ -52,12 +52,13 @@ export default function VerifyPage() {
     setStatus('checking')
     try {
       const session = await getActiveSession()
-      if (!session || !session.session_id) {
+      const sessionId = session?.session_id || session?.id
+      if (!sessionId) {
         setStatus('no-session')
         return
       }
       // POST start — UI trigger only, box may have already started
-      try { await startVerification(session.session_id) } catch { /* ignore */ }
+      try { await startVerification(sessionId) } catch { /* ignore */ }
 
       // Polling every 2s
       intervalRef.current = setInterval(async () => {

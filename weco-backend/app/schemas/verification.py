@@ -34,6 +34,21 @@ class VerificationResultRequest(BaseModel):
     event_id: Optional[str] = None  # Опциональный event_id для дополнительной защиты от дублей
 
 
+class MachineSessionStatusResponse(BaseModel):
+    """Machine session status for WEcoBox polling."""
+    id: str
+    status: str
+    is_bottle: Optional[bool]
+    expires_at: Optional[datetime]
+    created_at: datetime
+    updated_at: Optional[datetime]
+    machine_id: Optional[str]
+    user_id: Optional[int]
+
+    class Config:
+        from_attributes = True
+
+
 class MachineSessionPollResponse(BaseModel):
     """Схема ответа для поллинга статуса сессии"""
     status: str
