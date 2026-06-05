@@ -10,6 +10,7 @@ from .verification import (
     VerificationStartRequest,
     VerificationResultRequest,
     MachineScanRequest,
+    MachineSessionStatusResponse,
     MachineSessionPollResponse
 )
 
@@ -22,5 +23,5 @@ __all__ = [
     "PickupLocationResponse", "PickupLocationDetailResponse",
     "RedemptionResponse", "RedeemRewardResponse", "StaffClaimRequest", "StaffClaimResponse", "StaffPreviewRequest", "StaffPreviewResponse",
     "VerificationSessionResponse", "VerificationStartRequest",
-    "VerificationResultRequest", "MachineScanRequest", "MachineSessionPollResponse"
+    "VerificationResultRequest", "MachineScanRequest", "MachineSessionStatusResponse", "MachineSessionPollResponse"
 ]

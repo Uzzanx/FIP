@@ -44,6 +44,11 @@ docker compose exec backend python scripts/seed_pickup_locations.py
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
 
+Machine session polling:
+- `GET /machine/sessions/{session_id}`
+- Header: `X-API-Key: ...`
+- Purpose: WEcoBox uses it to wait until the user presses START on Verify page.
+
 ## Frontend
 
 После запуска frontend: http://localhost:5173
