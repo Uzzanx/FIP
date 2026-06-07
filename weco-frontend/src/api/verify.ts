@@ -19,6 +19,13 @@ export async function getActiveSession(): Promise<VerifySession | null> {
   }
 }
 
+export async function getVerificationSession(sessionId: string): Promise<VerifySession> {
+  const res = await apiFetch(`/verify/${sessionId}`)
+  if (!res.ok) throw new Error('Failed to get verification session')
+  return res.json()
+}
+
 export async function startVerification(sessionId: string): Promise<void> {
-  await apiFetch(`/verify/${sessionId}/start`, { method: 'POST' })
+  const res = await apiFetch(`/verify/${sessionId}/start`, { method: 'POST' })
+  if (!res.ok) throw new Error('Failed to start verification')
 }

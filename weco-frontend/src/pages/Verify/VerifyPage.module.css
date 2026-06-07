@@ -152,6 +152,7 @@
 .page__status-bar--checking { background: #294527; }
 .page__status-bar--success { background: #2d6a2d; }
 .page__status-bar--failed { background: #7a2020; }
+.page__status-bar--expired { background: #8a5a18; }
 .page__status-bar--nosession { background: #6b5a20; }
 .page__status-label { display: block; }
 
@@ -165,6 +166,7 @@
 .page__message--checking { color: #294527; }
 .page__message--success { color: #2d6a2d; font-weight: bold; }
 .page__message--failed { color: #7a2020; }
+.page__message--expired { color: #8a5a18; }
 .page__message--nosession { color: #6b5a20; }
 
 

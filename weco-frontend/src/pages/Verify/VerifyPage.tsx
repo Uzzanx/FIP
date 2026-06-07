@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import headerLogo from '../../assets/header-logo.png'
-import { getActiveSession, startVerification } from '../../api/verify'
+import { getActiveSession, getVerificationSession, startVerification } from '../../api/verify'
 import LanguageToggle from '../../components/LanguageToggle/LanguageToggle'
 import { useLanguage } from '../../i18n/LanguageContext'
 import styles from './VerifyPage.module.css'
 
-type Status = 'idle' | 'checking' | 'success' | 'failed' | 'no-session'
+type Status = 'idle' | 'pending' | 'in-progress' | 'completed' | 'failed' | 'expired' | 'error' | 'start-error' | 'no-session'
 
 export default function VerifyPage() {
   const { locale } = useLanguage()
@@ -34,11 +34,38 @@ export default function VerifyPage() {
   }
 
   // Cleanup on unmount — no leaks
+  const resultText = {
+    accepted: ru ? 'Бутылка принята' : 'Bottle accepted',
+    acceptedMsg: ru ? 'Бутылка успешно распознана. Балл добавлен на ваш баланс.' : 'Bottle verified successfully. Points were added to your balance.',
+    rejected: ru ? 'Отклонено' : 'Rejected',
+    rejectedMsg: ru ? 'Объект не распознан как пластиковая бутылка. Баллы не были начислены.' : 'The object was not recognized as a plastic bottle. No points were added.',
+    expired: ru ? 'Сессия истекла' : 'Session expired',
+    expiredMsg: ru ? 'Отсканируйте QR-код заново и начните новую проверку.' : 'Please scan your QR again and start a new verification.',
+    error: ru ? 'Ошибка проверки' : 'Verification failed',
+    errorMsg: ru ? 'Что-то пошло не так во время проверки. Попробуйте еще раз.' : 'Something went wrong. Please try again.',
+    startError: ru ? 'Ошибка запуска' : 'Start error',
+    startErrorMsg: ru ? 'Не удалось начать проверку. Попробуйте отсканировать QR-код заново.' : 'Could not start verification. Please try scanning the QR code again.',
+    pendingTitle: ru ? 'Сессия готова' : 'Session ready',
+    pending: ru ? 'Нажмите START, чтобы начать проверку.' : 'Press START to begin verification.',
+    inProgress: ru ? 'Проверка выполняется...' : 'Verification in progress...',
+    inProgressMsg: ru ? 'Бокс проверяет объект. Пожалуйста, подождите.' : 'The box is checking the object. Please wait.',
+  }
+
   useEffect(() => {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
     }
   }, [])
+
+  useEffect(() => {
+    if (status !== 'completed') return
+
+    const timer = window.setTimeout(() => {
+      navigate('/profile')
+    }, 2500)
+
+    return () => window.clearTimeout(timer)
+  }, [status, navigate])
 
   const stopPolling = () => {
     if (intervalRef.current) {
@@ -49,7 +76,7 @@ export default function VerifyPage() {
 
   const handleStart = async () => {
     stopPolling()
-    setStatus('checking')
+    setStatus('pending')
     try {
       const session = await getActiveSession()
       const sessionId = session?.session_id || session?.id
@@ -57,36 +84,43 @@ export default function VerifyPage() {
         setStatus('no-session')
         return
       }
-      // POST start — UI trigger only, box may have already started
-      try { await startVerification(sessionId) } catch { /* ignore */ }
+      try {
+        await startVerification(sessionId)
+      } catch {
+        setStatus('start-error')
+        return
+      }
+      setStatus('in-progress')
 
       // Polling every 2s
       intervalRef.current = setInterval(async () => {
         try {
-          const poll = await getActiveSession()
-          if (poll === null) {
-            // Session cleared = verified
-            stopPolling()
-            setStatus('success')
-            setTimeout(() => navigate('/profile'), 1500)
-            return
-          }
+          const poll = await getVerificationSession(sessionId)
           const s = poll.status?.toLowerCase()
-          if (s === 'success' || s === 'completed' || poll.is_bottle === true) {
+          if (s === 'completed') {
             stopPolling()
-            setStatus('success')
-            setTimeout(() => navigate('/profile'), 1500)
-          } else if (s === 'failed' || s === 'error') {
+            setStatus('completed')
+          } else if (s === 'failed') {
             stopPolling()
             setStatus('failed')
+          } else if (s === 'expired') {
+            stopPolling()
+            setStatus('expired')
+          } else if (s === 'pending') {
+            setStatus('pending')
+          } else if (s === 'in_progress') {
+            setStatus('in-progress')
+          } else {
+            stopPolling()
+            setStatus('error')
           }
-          // else: still pending, keep polling
         } catch {
-          // network error, keep polling
+          stopPolling()
+          setStatus('error')
         }
       }, 2000)
     } catch {
-      setStatus('failed')
+      setStatus('error')
     }
   }
 
@@ -97,33 +131,49 @@ export default function VerifyPage() {
 
   const barClassMap: Record<Status, string> = {
     'idle': styles['page__status-bar'],
-    'checking': styles['page__status-bar'] + ' ' + styles['page__status-bar--checking'],
-    'success': styles['page__status-bar'] + ' ' + styles['page__status-bar--success'],
+    'pending': styles['page__status-bar'] + ' ' + styles['page__status-bar--checking'],
+    'in-progress': styles['page__status-bar'] + ' ' + styles['page__status-bar--checking'],
+    'completed': styles['page__status-bar'] + ' ' + styles['page__status-bar--success'],
     'failed': styles['page__status-bar'] + ' ' + styles['page__status-bar--failed'],
+    'expired': styles['page__status-bar'] + ' ' + styles['page__status-bar--expired'],
+    'error': styles['page__status-bar'] + ' ' + styles['page__status-bar--failed'],
+    'start-error': styles['page__status-bar'] + ' ' + styles['page__status-bar--failed'],
     'no-session': styles['page__status-bar'] + ' ' + styles['page__status-bar--nosession'],
   }
 
   const barLabel: Record<Status, string> = {
     'idle': text.ready,
-    'checking': text.loading,
-    'success': text.success,
-    'failed': text.failed,
+    'pending': resultText.pendingTitle,
+    'in-progress': resultText.inProgress,
+    'completed': resultText.accepted,
+    'failed': resultText.rejected,
+    'expired': resultText.expired,
+    'error': resultText.error,
+    'start-error': resultText.startError,
     'no-session': text.noSession,
   }
 
   const msgText: Record<Status, string> = {
     'idle': '',
-    'checking': text.checking,
-    'success': text.successMsg,
-    'failed': text.failedMsg,
+    'pending': resultText.pending,
+    'in-progress': resultText.inProgressMsg,
+    'completed': resultText.acceptedMsg,
+    'failed': resultText.rejectedMsg,
+    'expired': resultText.expiredMsg,
+    'error': resultText.errorMsg,
+    'start-error': resultText.startErrorMsg,
     'no-session': text.noSessionMsg,
   }
 
   const msgClassMap: Record<Status, string> = {
     'idle': styles['page__message'],
-    'checking': styles['page__message'] + ' ' + styles['page__message--checking'],
-    'success': styles['page__message'] + ' ' + styles['page__message--success'],
+    'pending': styles['page__message'] + ' ' + styles['page__message--checking'],
+    'in-progress': styles['page__message'] + ' ' + styles['page__message--checking'],
+    'completed': styles['page__message'] + ' ' + styles['page__message--success'],
     'failed': styles['page__message'] + ' ' + styles['page__message--failed'],
+    'expired': styles['page__message'] + ' ' + styles['page__message--expired'],
+    'error': styles['page__message'] + ' ' + styles['page__message--failed'],
+    'start-error': styles['page__message'] + ' ' + styles['page__message--failed'],
     'no-session': styles['page__message'] + ' ' + styles['page__message--nosession'],
   }
 
@@ -152,17 +202,17 @@ export default function VerifyPage() {
               {text.start}
             </button>
           )}
-          {status === 'checking' && (
+          {(status === 'pending' || status === 'in-progress') && (
             <div className={styles['page__start-btn'] + ' ' + styles['page__start-btn--loading']}>
               ...
             </div>
           )}
-          {status === 'success' && (
+          {status === 'completed' && (
             <div className={styles['page__start-btn'] + ' ' + styles['page__start-btn--success']}>
               &#10003;
             </div>
           )}
-          {status === 'failed' && (
+          {(status === 'failed' || status === 'expired' || status === 'error' || status === 'start-error') && (
             <button
               className={styles['page__start-btn'] + ' ' + styles['page__start-btn--failed']}
               onClick={handleRetry}

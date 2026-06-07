@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from typing import Optional
 from fastapi import APIRouter, Depends, Path, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -19,6 +20,28 @@ async def get_my_active_session(
 ):
     """Получение активной сессии проверки пользователя"""
     session = await VerificationService.get_user_active_session(db, current_user)
+    return session
+
+
+@router.get("/{session_id}", response_model=VerificationSessionResponse)
+async def get_verification_session(
+    session_id: str = Path(..., description="Verification session ID"),
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    session = await VerificationService.get_session(db, session_id)
+    if session.user_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="No access to this verification session"
+        )
+    if (
+        session.status in {"pending", "in_progress"}
+        and session.expires_at <= datetime.now(timezone.utc)
+    ):
+        session.status = "expired"
+        await db.commit()
+        await db.refresh(session)
     return session
 
 
